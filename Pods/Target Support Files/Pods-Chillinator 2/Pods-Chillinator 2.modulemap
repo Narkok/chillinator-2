@@ -1,0 +1,6 @@
+framework module Pods_Chillinator_2 {
+  umbrella header "Pods-Chillinator 2-umbrella.h"
+
+  export *
+  module * { export * }
+}
