@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="Chillinator_2" customModuleProvider="target">
             <connections>
+                <outlet property="button" destination="ffR-oV-3x1" id="XnU-ZQ-uuC"/>
+                <outlet property="disk" destination="lct-Ov-0k7" id="zY7-kN-myD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +21,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lct-Ov-0k7" customClass="Disk" customModule="Chillinator_2" customModuleProvider="target">
+                    <rect key="frame" x="57" y="276" width="121" height="112"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="disc"/>
+                        <userDefinedRuntimeAttribute type="image" keyPath="shineImage" value="shine"/>
+                        <userDefinedRuntimeAttribute type="image" keyPath="pipkaImage" value="pipka"/>
+                        <userDefinedRuntimeAttribute type="image" keyPath="playheadImage" value="playHeadDoc"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffR-oV-3x1">
+                    <rect key="frame" x="244" y="697" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="53.600000000000001" y="39.90147783251232"/>
         </view>
     </objects>
+    <resources>
+        <image name="disc" width="477" height="477"/>
+        <image name="pipka" width="200" height="200"/>
+        <image name="playHeadDoc" width="300" height="950"/>
+        <image name="shine" width="477" height="477"/>
+    </resources>
 </document>
