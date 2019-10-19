@@ -24,7 +24,6 @@ import Kingfisher
     private let pipkaImageView    = UIImageView()
     private let playHeadImageView = UIImageView()
 
-    private var state: State   = .stop
     private var shine1RotAngle = CGFloat.random(in: -CGFloat.pi...CGFloat.pi)
     private var shine2RotAngle = CGFloat.random(in: -CGFloat.pi...CGFloat.pi)
     private var discRotAngle   = CGFloat.random(in: -CGFloat.pi...CGFloat.pi)
@@ -107,7 +106,7 @@ import Kingfisher
 
     /// Изменение состояния диска
     func setState(_ newState: State) {
-        switch state {
+        switch newState {
             
         /// Анимация вращения диска
         case .start:

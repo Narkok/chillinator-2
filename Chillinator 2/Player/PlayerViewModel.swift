@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+class PlayerViewModel {
+    
+    private static let musicListService = MusicListService()
+
+    init() {
+        
+        /// Получить список песен
+        let musicList = PlayerViewModel.musicListService.getList().map { $0.element ?? [] }
+
+        
+    }
+    
+}

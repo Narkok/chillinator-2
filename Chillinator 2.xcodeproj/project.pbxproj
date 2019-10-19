@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C4D9C9466D56876B9457DFFB /* Pods_Chillinator_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282A009B59A74098116420DF /* Pods_Chillinator_2.framework */; };
+		EB5C0490235B862F00072655 /* MusicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C048F235B862F00072655 /* MusicListService.swift */; };
 		EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B58E235A4850008AB703 /* PlayerViewController.swift */; };
 		EB69B591235A4850008AB703 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB69B58F235A4850008AB703 /* PlayerViewController.xib */; };
 		EB69B593235A49CA008AB703 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B592235A49CA008AB703 /* PlayerViewModel.swift */; };
@@ -22,6 +23,7 @@
 		282A009B59A74098116420DF /* Pods_Chillinator_2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chillinator_2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		31ECB4A8F7FC5DF6C4FA7A01 /* Pods-Chillinator 2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chillinator 2.release.xcconfig"; path = "Target Support Files/Pods-Chillinator 2/Pods-Chillinator 2.release.xcconfig"; sourceTree = "<group>"; };
 		9412D0CB128325E7406328D7 /* Pods-Chillinator 2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chillinator 2.debug.xcconfig"; path = "Target Support Files/Pods-Chillinator 2/Pods-Chillinator 2.debug.xcconfig"; sourceTree = "<group>"; };
+		EB5C048F235B862F00072655 /* MusicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListService.swift; sourceTree = "<group>"; };
 		EB69B58E235A4850008AB703 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		EB69B58F235A4850008AB703 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		EB69B592235A49CA008AB703 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
@@ -61,6 +63,14 @@
 				282A009B59A74098116420DF /* Pods_Chillinator_2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB5C048E235B860F00072655 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EB5C048F235B862F00072655 /* MusicListService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		EB69B58D235A4823008AB703 /* Player */ = {
@@ -111,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				EB860C78235A460000733FE5 /* AppDelegate.swift */,
+				EB5C048E235B860F00072655 /* Service */,
 				EB69B597235A5A32008AB703 /* Extensions */,
 				EB69B594235A49FE008AB703 /* Components */,
 				EB69B58D235A4823008AB703 /* Player */,
@@ -241,6 +252,7 @@
 				EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */,
 				EB69B599235A5A51008AB703 /* UIView+Fade.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
+				EB5C0490235B862F00072655 /* MusicListService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

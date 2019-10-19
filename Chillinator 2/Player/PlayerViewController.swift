@@ -12,6 +12,8 @@ import RxSwift
 
 
 class PlayerViewController: UIViewController {
+    
+    let viewModel = PlayerViewModel()
 
     @IBOutlet weak var disk: Disk!
     
@@ -21,18 +23,6 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        button.rx.tap.asDriver().drive(onNext:{ [unowned self] _ in
-            let images = ["http://nrkk.ru/frogogoTestAppAvatars/avatar1.png",
-                          "http://nrkk.ru/frogogoTestAppAvatars/avatar2.png",
-                          "http://nrkk.ru/frogogoTestAppAvatars/avatar3.png",
-                          "http://nrkk.ru/frogogoTestAppAvatars/avatar4.png",
-                          "http://nrkk.ru/frogogoTestAppAvatars/avatar5.png"]
-            let num = Int.random(in: 0..<images.count)
-            self.disk.setCover(url: images[num])
-            self.disk.setPlayHeadPosition(relativeTime: 0)
-            self.disk.setState(.start)
-        }).disposed(by: disposeBag)
         
     }
 }
