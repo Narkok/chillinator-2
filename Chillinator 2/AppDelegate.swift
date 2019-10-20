@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let playerViewController = PlayerViewController()
-        window!.rootViewController = playerViewController
+        let startScreenViewController = StartScreenViewController()
+        window!.rootViewController = startScreenViewController
         window!.makeKeyAndVisible()
         return true
     }

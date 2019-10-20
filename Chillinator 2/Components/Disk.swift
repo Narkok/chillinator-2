@@ -40,7 +40,7 @@ import Kingfisher
         /// Установка фона диска
         discImageView.image     = backgroundImage
         discImageView.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
-        discImageView.transform = CGAffineTransform(rotationAngle: discRotAngle)
+        discImageView.rotate(by: discRotAngle)
         discImageView.layer.shadowColor   = UIColor.black.cgColor
         discImageView.layer.shadowRadius  = 15
         discImageView.layer.shadowOpacity = 0.7
@@ -48,11 +48,11 @@ import Kingfisher
         /// Установка бликов
         shine1ImageView.image     = shineImage
         shine1ImageView.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
-        shine1ImageView.transform = CGAffineTransform(rotationAngle: shine1RotAngle)
+        shine1ImageView.rotate(by: shine1RotAngle)
         
         shine2ImageView.image     = shineImage
         shine2ImageView.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
-        shine2ImageView.transform = CGAffineTransform(rotationAngle: shine2RotAngle)
+        shine2ImageView.rotate(by: shine2RotAngle)
         
         /// Установка обложки песни
         let coverImageSize           = Int(Double(size) * 0.4)
@@ -99,7 +99,7 @@ import Kingfisher
     func setPlayHeadPosition(relativeTime: CGFloat) {
         let angle = (relativeTime - 1) * CGFloat.pi / 12
         UIView.animate(withDuration: 1) { [unowned self] in
-            self.playHeadImageView.transform = CGAffineTransform(rotationAngle: angle)
+            self.playHeadImageView.rotate(by: angle)
         }
     }
     
@@ -132,7 +132,7 @@ import Kingfisher
         /// Удаление анимации
         object.layer.removeAllAnimations()
         /// Поворот на сохранённый угол
-        object.transform = CGAffineTransform(rotationAngle: rotAngle)
+        object.rotate(by: rotAngle)
         return rotAngle
     }
     

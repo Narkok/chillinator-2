@@ -40,6 +40,7 @@ class MusicListService {
     
     /// Получить список песен
     func getList() -> Observable<Event<[Music]>> {
+        URLCache().removeAllCachedResponses()
         MusicListService.provider.request(.getList, completion: { [unowned self] result in
             switch result {
             case .success(let response):
@@ -47,15 +48,15 @@ class MusicListService {
                     let data = try JSONDecoder().decode([Music].self, from: response.data)
                     self.musicList.accept(.next(data))
                 }
-                catch { self.musicList.accept(.error(AMDMError(message: "Ошибка при парсинге данных: \(error)"))) }
-            case .failure: self.musicList.accept(.error(AMDMError(message: "Ошибка при запросе данных")))
+                catch { self.musicList.accept(.error(ServiceError(message: error.localizedDescription))) }
+            case .failure: self.musicList.accept(.error(ServiceError(message: "Ошибка при запросе данных")))
             }
         })
         return musicList.asObservable()
     }
     
     
-    struct AMDMError: Error {
+    struct ServiceError: Error {
         let message: String
     }
 }

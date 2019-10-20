@@ -13,10 +13,13 @@
 		EB69B591235A4850008AB703 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB69B58F235A4850008AB703 /* PlayerViewController.xib */; };
 		EB69B593235A49CA008AB703 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B592235A49CA008AB703 /* PlayerViewModel.swift */; };
 		EB69B596235A4A1C008AB703 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B595235A4A1C008AB703 /* Disk.swift */; };
-		EB69B599235A5A51008AB703 /* UIView+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B598235A5A51008AB703 /* UIView+Fade.swift */; };
+		EB69B599235A5A51008AB703 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B598235A5A51008AB703 /* UIView.swift */; };
 		EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB860C78235A460000733FE5 /* AppDelegate.swift */; };
 		EB860C80235A460100733FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB860C7F235A460100733FE5 /* Assets.xcassets */; };
 		EB860C83235A460100733FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB860C81235A460100733FE5 /* LaunchScreen.storyboard */; };
+		EBB2AB9D235C6A2500F4A432 /* StartScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2AB9C235C6A2500F4A432 /* StartScreenViewModel.swift */; };
+		EBB2ABA0235C6A3800F4A432 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB2AB9E235C6A3800F4A432 /* StartScreenViewController.swift */; };
+		EBB2ABA1235C6A3800F4A432 /* StartScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB2AB9F235C6A3800F4A432 /* StartScreenViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,12 +31,15 @@
 		EB69B58F235A4850008AB703 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		EB69B592235A49CA008AB703 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EB69B595235A4A1C008AB703 /* Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
-		EB69B598235A5A51008AB703 /* UIView+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Fade.swift"; sourceTree = "<group>"; };
+		EB69B598235A5A51008AB703 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		EB860C75235A460000733FE5 /* Chillinator 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chillinator 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB860C78235A460000733FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB860C7F235A460100733FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB860C82235A460100733FE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB860C84235A460100733FE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBB2AB9C235C6A2500F4A432 /* StartScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewModel.swift; sourceTree = "<group>"; };
+		EBB2AB9E235C6A3800F4A432 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
+		EBB2AB9F235C6A3800F4A432 /* StartScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +100,7 @@
 		EB69B597235A5A32008AB703 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EB69B598235A5A51008AB703 /* UIView+Fade.swift */,
+				EB69B598235A5A51008AB703 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -121,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				EB860C78235A460000733FE5 /* AppDelegate.swift */,
+				EBB2AB9B235C6A0400F4A432 /* StartScreen */,
 				EB5C048E235B860F00072655 /* Service */,
 				EB69B597235A5A32008AB703 /* Extensions */,
 				EB69B594235A49FE008AB703 /* Components */,
@@ -130,6 +137,16 @@
 				EB860C84235A460100733FE5 /* Info.plist */,
 			);
 			path = "Chillinator 2";
+			sourceTree = "<group>";
+		};
+		EBB2AB9B235C6A0400F4A432 /* StartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				EBB2AB9C235C6A2500F4A432 /* StartScreenViewModel.swift */,
+				EBB2AB9E235C6A3800F4A432 /* StartScreenViewController.swift */,
+				EBB2AB9F235C6A3800F4A432 /* StartScreenViewController.xib */,
+			);
+			path = StartScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +212,7 @@
 				EB860C83235A460100733FE5 /* LaunchScreen.storyboard in Resources */,
 				EB860C80235A460100733FE5 /* Assets.xcassets in Resources */,
 				EB69B591235A4850008AB703 /* PlayerViewController.xib in Resources */,
+				EBB2ABA1235C6A3800F4A432 /* StartScreenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +268,11 @@
 				EB69B596235A4A1C008AB703 /* Disk.swift in Sources */,
 				EB69B593235A49CA008AB703 /* PlayerViewModel.swift in Sources */,
 				EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */,
-				EB69B599235A5A51008AB703 /* UIView+Fade.swift in Sources */,
+				EB69B599235A5A51008AB703 /* UIView.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
+				EBB2AB9D235C6A2500F4A432 /* StartScreenViewModel.swift in Sources */,
 				EB5C0490235B862F00072655 /* MusicListService.swift in Sources */,
+				EBB2ABA0235C6A3800F4A432 /* StartScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,14 +11,10 @@ import RxSwift
 import RxCocoa
 
 class PlayerViewModel {
-    
-    private static let musicListService = MusicListService()
 
-    init() {
+    init(data: [Music]) {
         
-        /// Получить список песен
-        let musicList = PlayerViewModel.musicListService.getList().map { $0.element ?? [] }
-
+        print(data.count)
         
     }
     

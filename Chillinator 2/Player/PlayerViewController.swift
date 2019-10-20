@@ -13,7 +13,7 @@ import RxSwift
 
 class PlayerViewController: UIViewController {
     
-    let viewModel = PlayerViewModel()
+    var viewModel: PlayerViewModel?
 
     @IBOutlet weak var disk: Disk!
     
@@ -23,6 +23,17 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+
         
+        guard let viewModel = viewModel else { return }
+        print(viewModel)
+    }
+    
+    
+    /// Настройка экрана
+    private func setup() {
+        view.alpha = 0
+        view.fadeIn()
     }
 }
