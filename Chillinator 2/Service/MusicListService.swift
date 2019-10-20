@@ -40,7 +40,6 @@ class MusicListService {
     
     /// Получить список песен
     func getList() -> Observable<Event<[Music]>> {
-        URLCache().removeAllCachedResponses()
         MusicListService.provider.request(.getList, completion: { [unowned self] result in
             switch result {
             case .success(let response):

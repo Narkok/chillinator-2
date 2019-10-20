@@ -14,6 +14,8 @@
 		EB69B593235A49CA008AB703 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B592235A49CA008AB703 /* PlayerViewModel.swift */; };
 		EB69B596235A4A1C008AB703 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B595235A4A1C008AB703 /* Disk.swift */; };
 		EB69B599235A5A51008AB703 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B598235A5A51008AB703 /* UIView.swift */; };
+		EB6DD74F235CBE780009B5DF /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DD74E235CBE780009B5DF /* PlayerModel.swift */; };
+		EB6DD751235CCC670009B5DF /* RxPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DD750235CCC670009B5DF /* RxPlayerItem.swift */; };
 		EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB860C78235A460000733FE5 /* AppDelegate.swift */; };
 		EB860C80235A460100733FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB860C7F235A460100733FE5 /* Assets.xcassets */; };
 		EB860C83235A460100733FE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB860C81235A460100733FE5 /* LaunchScreen.storyboard */; };
@@ -32,6 +34,8 @@
 		EB69B592235A49CA008AB703 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EB69B595235A4A1C008AB703 /* Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
 		EB69B598235A5A51008AB703 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		EB6DD74E235CBE780009B5DF /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
+		EB6DD750235CCC670009B5DF /* RxPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPlayerItem.swift; sourceTree = "<group>"; };
 		EB860C75235A460000733FE5 /* Chillinator 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chillinator 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB860C78235A460000733FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB860C7F235A460100733FE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			children = (
 				EB69B58E235A4850008AB703 /* PlayerViewController.swift */,
 				EB69B592235A49CA008AB703 /* PlayerViewModel.swift */,
+				EB6DD74E235CBE780009B5DF /* PlayerModel.swift */,
 				EB69B58F235A4850008AB703 /* PlayerViewController.xib */,
 			);
 			path = Player;
@@ -93,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				EB69B595235A4A1C008AB703 /* Disk.swift */,
+				EB6DD750235CCC670009B5DF /* RxPlayerItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,9 +274,11 @@
 				EB69B596235A4A1C008AB703 /* Disk.swift in Sources */,
 				EB69B593235A49CA008AB703 /* PlayerViewModel.swift in Sources */,
 				EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */,
+				EB6DD74F235CBE780009B5DF /* PlayerModel.swift in Sources */,
 				EB69B599235A5A51008AB703 /* UIView.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
 				EBB2AB9D235C6A2500F4A432 /* StartScreenViewModel.swift in Sources */,
+				EB6DD751235CCC670009B5DF /* RxPlayerItem.swift in Sources */,
 				EB5C0490235B862F00072655 /* MusicListService.swift in Sources */,
 				EBB2ABA0235C6A3800F4A432 /* StartScreenViewController.swift in Sources */,
 			);

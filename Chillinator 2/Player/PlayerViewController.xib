@@ -12,8 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="Chillinator_2" customModuleProvider="target">
             <connections>
-                <outlet property="button" destination="ffR-oV-3x1" id="XnU-ZQ-uuC"/>
                 <outlet property="disk" destination="lct-Ov-0k7" id="zY7-kN-myD"/>
+                <outlet property="listButton" destination="U1L-zp-zUQ" id="oxd-hc-0VD"/>
+                <outlet property="nextButton" destination="S2k-o3-r1o" id="ZvK-iJ-H3y"/>
+                <outlet property="playButton" destination="2az-v4-nLr" id="gHZ-V2-h2b"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,12 +24,70 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffR-oV-3x1">
-                    <rect key="frame" x="284" y="717" width="46" height="30"/>
-                    <state key="normal" title="Button"/>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-st-BbK">
+                    <rect key="frame" x="20" y="662" width="335" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTJ-IK-3k9">
+                            <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="100"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-zp-zUQ">
+                                    <rect key="frame" x="24" y="18" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="llI-fe-rkX"/>
+                                        <constraint firstAttribute="width" constant="64" id="otc-2h-tye"/>
+                                    </constraints>
+                                    <state key="normal" image="listButton"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="U1L-zp-zUQ" firstAttribute="centerX" secondItem="lTJ-IK-3k9" secondAttribute="centerX" id="70x-2k-H0n"/>
+                                <constraint firstItem="U1L-zp-zUQ" firstAttribute="centerY" secondItem="lTJ-IK-3k9" secondAttribute="centerY" id="88v-rx-gus"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-ou-MDR">
+                            <rect key="frame" x="111.66666666666666" y="0.0" width="111.66666666666666" height="100"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2az-v4-nLr">
+                                    <rect key="frame" x="24" y="18" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="64" id="9QA-s0-feE"/>
+                                        <constraint firstAttribute="height" constant="64" id="NDu-Vl-kRT"/>
+                                    </constraints>
+                                    <state key="normal" image="playButton"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="2az-v4-nLr" firstAttribute="centerY" secondItem="c7Y-ou-MDR" secondAttribute="centerY" id="BMZ-0w-ZyQ"/>
+                                <constraint firstItem="2az-v4-nLr" firstAttribute="centerX" secondItem="c7Y-ou-MDR" secondAttribute="centerX" id="q8p-jF-F17"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPV-pM-sOc">
+                            <rect key="frame" x="223.33333333333334" y="0.0" width="111.66666666666666" height="100"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-o3-r1o">
+                                    <rect key="frame" x="23.999999999999972" y="18" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="64" id="fW5-DD-iHF"/>
+                                        <constraint firstAttribute="width" constant="64" id="o2T-Ra-6Vn"/>
+                                    </constraints>
+                                    <state key="normal" backgroundImage="nextButton"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="S2k-o3-r1o" firstAttribute="centerY" secondItem="dPV-pM-sOc" secondAttribute="centerY" id="70a-Kt-t9K"/>
+                                <constraint firstItem="S2k-o3-r1o" firstAttribute="centerX" secondItem="dPV-pM-sOc" secondAttribute="centerX" id="XRG-Yp-nKK"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="VhY-aM-t2N"/>
+                    </constraints>
+                </stackView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lct-Ov-0k7" customClass="Disk" customModule="Chillinator_2" customModuleProvider="target">
-                    <rect key="frame" x="62" y="145" width="121" height="112"/>
+                    <rect key="frame" x="100" y="162" width="175" height="173"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
@@ -38,10 +98,11 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ffR-oV-3x1" secondAttribute="bottom" constant="31" id="GIw-fI-h7q"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ffR-oV-3x1" secondAttribute="trailing" constant="45" id="Yng-KS-pNX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sLH-st-BbK" secondAttribute="bottom" constant="16" id="GRf-fg-Mlu"/>
+                <constraint firstItem="sLH-st-BbK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jii-EB-AVT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sLH-st-BbK" secondAttribute="trailing" constant="20" id="zDR-cG-YRP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="39.90147783251232"/>
@@ -49,7 +110,10 @@
     </objects>
     <resources>
         <image name="disc" width="477" height="477"/>
+        <image name="listButton" width="96" height="96"/>
+        <image name="nextButton" width="96" height="96"/>
         <image name="pipka" width="200" height="200"/>
+        <image name="playButton" width="96" height="96"/>
         <image name="playHeadDoc" width="300" height="950"/>
         <image name="shine" width="477" height="477"/>
     </resources>

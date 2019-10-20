@@ -36,5 +36,4 @@ class StartScreenViewModel {
         output = Output(didFinishLoading: didFinishLoading,
                         musicList: musicList)
     }
-    
 }
