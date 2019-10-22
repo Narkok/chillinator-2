@@ -20,6 +20,4 @@ class RxPlayerItem: AVPlayerItem {
             .notification(.AVPlayerItemDidPlayToEndTime, object: self)
             .map { _ in () }
     }
-    
-    deinit { print("deinit") }
 }

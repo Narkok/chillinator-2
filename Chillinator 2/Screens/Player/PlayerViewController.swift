@@ -16,19 +16,17 @@ class PlayerViewController: UIViewController {
     
     var viewModel: PlayerViewModel?
     
-    var player = AVPlayer()
+    let player = AVPlayer()
+    let disposeBag = DisposeBag()
+    
+    /// Вынести в viewModel, а то стремно как-то тут держать
     private var onPlaying = false
     
     @IBOutlet weak var disk: Disk!
-    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
     
-   
-    
-    
-    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +39,6 @@ class PlayerViewController: UIViewController {
         
         /// Настройка подписок
         setupSubscriptions()
-        
-        
-        
     }
     
     
@@ -70,15 +65,18 @@ class PlayerViewController: UIViewController {
     private func setupSubscriptions() {
         guard let viewModel = viewModel else { return }
         
+        
         /// Кнопка 'next'
         nextButton.rx.tap.map { .setNext }
             .bind(to: viewModel.input.change)
             .disposed(by: disposeBag)
         
+        
         /// Кнопка 'play/pause'
         playButton.rx.tap
             .bind(to: viewModel.input.play)
             .disposed(by: disposeBag)
+        
         
         /// Настройка композиции
         viewModel.output.music.subscribe(onNext:{ [unowned self] music in
@@ -100,6 +98,7 @@ class PlayerViewController: UIViewController {
 
         }).disposed(by: disposeBag)
         
+        
         /// Остановка/проигрывание композиции
         playButton.rx.tap.asDriver().drive(onNext:{ [unowned self] in
             self.onPlaying = !self.onPlaying
@@ -115,5 +114,17 @@ class PlayerViewController: UIViewController {
             }
         }).disposed(by: disposeBag)
         
+
+        /// Открыть контроллер со списком композиций
+        listButton.rx.tap.withLatestFrom(viewModel.output.musicList)
+            .subscribe(onNext: { [unowned self] musicList in
+                print(musicList)
+                let mlController = MusicListViewController()
+                mlController.viewModel = MusicListViewModel(data: musicList)
+                mlController.modalPresentationStyle = .overFullScreen
+                mlController.modalTransitionStyle = .crossDissolve
+                self.present(mlController, animated: false, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 }

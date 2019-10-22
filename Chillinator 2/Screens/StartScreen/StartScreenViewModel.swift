@@ -33,7 +33,6 @@ class StartScreenViewModel {
         /// Конец загрузки
         let didFinishLoading = musicList.map { _ in () }
         
-        output = Output(didFinishLoading: didFinishLoading,
-                        musicList: musicList)
+        output = Output(didFinishLoading: didFinishLoading, musicList: musicList)
     }
 }

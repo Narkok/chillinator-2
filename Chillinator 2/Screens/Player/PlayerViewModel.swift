@@ -22,24 +22,24 @@ class PlayerViewModel {
     
     struct Output {
         let music: Observable<Music>
+        let musicList: Observable<MusicList>
     }
 
     init(data: [Music]) {
         
         /// Список песен
-        let musicList = MusicList(from: data)
-        
-        /// 
-        let musicNumChanged = input.change
-            .scan(musicList) { list, changeType in
+        let initialMusicList = MusicList(from: data)
+        let musicList = input.change
+            .scan(initialMusicList) { list, changeType in
                 var list = list
                 list.changeMusic(by: changeType)
                 return list
             }
-            .startWith(musicList)
+            .startWith(initialMusicList)
         
-        let music = musicNumChanged.map { $0.getMusic() }
+        /// Текущая композиция
+        let music = musicList.map { $0.getMusic() }
         
-        output = Output(music: music)
+        output = Output(music: music, musicList: musicList)
     }
 }
