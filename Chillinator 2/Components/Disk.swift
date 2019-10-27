@@ -80,14 +80,14 @@ import Kingfisher
     
     
     /// Анимированная установка новой обложки
-    func setCover(url: String){
+    func setCover(coverURL: String?){
         let duration = 0.4
         /// Затемнить обложку
         coverImageView.fadeOut(withDuration: duration)
         Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [unowned self] _ in
-            guard let coverURL = URL(string: url) else { return }
+            guard let coverURL = coverURL, let url = URL(string: coverURL) else { return }
             /// Загрузить новую обложку
-            self.coverImageView.kf.setImage(with: coverURL) { [unowned self] _ in
+            self.coverImageView.kf.setImage(with: url) { [unowned self] _ in
                 /// Показать новую обложку
                 self.coverImageView.fadeIn(withDuration: duration)
             }

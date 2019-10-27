@@ -25,10 +25,10 @@ enum MusicListAPIRequest: TargetType {
 
 /// Структура песни
 struct Music: Codable {
-    let title: String
-    let artist: String
-    let coverURL: String
-    let musicURL: String
+    let title: String?
+    let artist: String?
+    let coverURL: String?
+    let musicURL: String?
 }
 
 

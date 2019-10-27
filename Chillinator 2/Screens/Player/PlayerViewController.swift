@@ -82,11 +82,11 @@ class PlayerViewController: UIViewController {
         viewModel.output.music.subscribe(onNext:{ [unowned self] music in
             
             /// Установка обложки
-            self.disk.setCover(url: music.coverURL)
+            self.disk.setCover(coverURL: music.coverURL)
             
             /// Установка новой песни в плеер
-            guard let musicURL = URL(string: music.musicURL) else { return }
-            let playerItem = RxPlayerItem(url: musicURL)
+            guard let musicURL = music.musicURL, let url = URL(string: musicURL) else { return }
+            let playerItem = RxPlayerItem(url: url)
             self.player.replaceCurrentItem(with: playerItem)
             self.disk.setPlayHeadPosition(relativeTime: 0)
             if self.onPlaying { self.player.play() }
