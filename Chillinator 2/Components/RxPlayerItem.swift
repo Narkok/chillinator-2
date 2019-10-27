@@ -13,11 +13,14 @@ import AVFoundation
 /// Rx обертка над AVPlayerItem
 class RxPlayerItem: AVPlayerItem {
     let disposeBag = DisposeBag()
-    
+
     /// PlayerItem дошел до конца композиции
     var didPlayToEndTime: Observable<Void> {
-        return NotificationCenter.default.rx
-            .notification(.AVPlayerItemDidPlayToEndTime, object: self)
-            .map { _ in () }
+        return NotificationCenter.default.rx.notification(.AVPlayerItemDidPlayToEndTime, object: self).asVoid()
     }
+}
+
+
+extension Observable {
+    func asVoid() -> Observable<Void> { return map { _ in () } }
 }

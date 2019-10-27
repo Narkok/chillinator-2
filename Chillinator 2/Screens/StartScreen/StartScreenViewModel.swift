@@ -31,7 +31,7 @@ class StartScreenViewModel {
             .share()
         
         /// Конец загрузки
-        let didFinishLoading = musicList.map { _ in () }
+        let didFinishLoading = musicList.asVoid()
         
         output = Output(didFinishLoading: didFinishLoading, musicList: musicList)
     }

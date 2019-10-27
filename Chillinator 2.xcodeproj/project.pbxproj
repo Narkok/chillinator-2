@@ -11,6 +11,8 @@
 		B8C3010E235FA32500EC6230 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C3010C235FA32500EC6230 /* MusicListViewController.swift */; };
 		B8C3010F235FA32500EC6230 /* MusicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C3010D235FA32500EC6230 /* MusicListViewController.xib */; };
 		C4D9C9466D56876B9457DFFB /* Pods_Chillinator_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282A009B59A74098116420DF /* Pods_Chillinator_2.framework */; };
+		EB22949D2365B521007A3D43 /* AVPlayer+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */; };
+		EB57AB842365D38F00A2B61B /* Disk+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB57AB832365D38F00A2B61B /* Disk+Rx.swift */; };
 		EB5C0490235B862F00072655 /* MusicListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5C048F235B862F00072655 /* MusicListService.swift */; };
 		EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B58E235A4850008AB703 /* PlayerViewController.swift */; };
 		EB69B591235A4850008AB703 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB69B58F235A4850008AB703 /* PlayerViewController.xib */; };
@@ -34,6 +36,8 @@
 		B8C3010A235FA30200EC6230 /* MusicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewModel.swift; sourceTree = "<group>"; };
 		B8C3010C235FA32500EC6230 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
 		B8C3010D235FA32500EC6230 /* MusicListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListViewController.xib; sourceTree = "<group>"; };
+		EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Rx.swift"; sourceTree = "<group>"; };
+		EB57AB832365D38F00A2B61B /* Disk+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Disk+Rx.swift"; sourceTree = "<group>"; };
 		EB5C048F235B862F00072655 /* MusicListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListService.swift; sourceTree = "<group>"; };
 		EB69B58E235A4850008AB703 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		EB69B58F235A4850008AB703 /* PlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				EB69B598235A5A51008AB703 /* UIView.swift */,
+				EB57AB832365D38F00A2B61B /* Disk+Rx.swift */,
+				EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,8 +310,10 @@
 				EB69B599235A5A51008AB703 /* UIView.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
 				EBB2AB9D235C6A2500F4A432 /* StartScreenViewModel.swift in Sources */,
+				EB22949D2365B521007A3D43 /* AVPlayer+Rx.swift in Sources */,
 				B8C3010B235FA30200EC6230 /* MusicListViewModel.swift in Sources */,
 				B8C3010E235FA32500EC6230 /* MusicListViewController.swift in Sources */,
+				EB57AB842365D38F00A2B61B /* Disk+Rx.swift in Sources */,
 				EB6DD751235CCC670009B5DF /* RxPlayerItem.swift in Sources */,
 				EB5C0490235B862F00072655 /* MusicListService.swift in Sources */,
 				EBB2ABA0235C6A3800F4A432 /* StartScreenViewController.swift in Sources */,

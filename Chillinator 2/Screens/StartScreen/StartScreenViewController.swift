@@ -31,6 +31,7 @@ class StartScreenViewController: UIViewController {
             .withLatestFrom(viewModel.output.musicList)
             .subscribe(onNext:{ [unowned self] musicList in
                 let playerController = PlayerViewController()
+                playerController.modalPresentationStyle = .overFullScreen
                 playerController.viewModel = PlayerViewModel(data: musicList)
                 self.present(playerController, animated: false)
             }).disposed(by: disposeBag)

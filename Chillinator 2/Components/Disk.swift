@@ -80,12 +80,12 @@ import Kingfisher
     
     
     /// Анимированная установка новой обложки
-    func setCover(coverURL: String?){
+    func setCover(coverURL: String){
         let duration = 0.4
         /// Затемнить обложку
         coverImageView.fadeOut(withDuration: duration)
         Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [unowned self] _ in
-            guard let coverURL = coverURL, let url = URL(string: coverURL) else { return }
+            guard let url = URL(string: coverURL) else { return }
             /// Загрузить новую обложку
             self.coverImageView.kf.setImage(with: url) { [unowned self] _ in
                 /// Показать новую обложку
@@ -95,9 +95,9 @@ import Kingfisher
     }
     
     
-    /// Установка позиции головки проигрывателя от времени
-    func setPlayHeadPosition(relativeTime: CGFloat) {
-        let angle = (relativeTime - 1) * CGFloat.pi / 12
+    /// Установка позиции головки проигрывателя
+    func setPlayHeadPosition(relativeTime: Double) {
+        let angle = (CGFloat(relativeTime) - 1) * CGFloat.pi / 12
         UIView.animate(withDuration: 1) { [unowned self] in
             self.playHeadImageView.rotate(by: angle)
         }

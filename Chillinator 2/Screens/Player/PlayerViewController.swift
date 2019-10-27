@@ -82,15 +82,14 @@ class PlayerViewController: UIViewController {
         viewModel.output.music.subscribe(onNext:{ [unowned self] music in
             
             /// Установка обложки
-            self.disk.setCover(coverURL: music.coverURL)
+            self.disk.setCover(coverURL: music.getCoverURL)
             
             /// Установка новой песни в плеер
-            guard let musicURL = music.musicURL, let url = URL(string: musicURL) else { return }
+            guard let url = URL(string: music.getMusicURL) else { return }
             let playerItem = RxPlayerItem(url: url)
             self.player.replaceCurrentItem(with: playerItem)
-            self.disk.setPlayHeadPosition(relativeTime: 0)
             if self.onPlaying { self.player.play() }
-            
+
             /// Запуск следующей песни по окончанию текущей
             playerItem.didPlayToEndTime.map { .setNext }
                 .bind(to: viewModel.input.change)
@@ -118,13 +117,21 @@ class PlayerViewController: UIViewController {
         /// Открыть контроллер со списком композиций
         listButton.rx.tap.withLatestFrom(viewModel.output.musicList)
             .subscribe(onNext: { [unowned self] musicList in
-                print(musicList)
                 let mlController = MusicListViewController()
                 mlController.viewModel = MusicListViewModel(data: musicList)
-                mlController.modalPresentationStyle = .overFullScreen
-                mlController.modalTransitionStyle = .crossDissolve
-                self.present(mlController, animated: false, completion: nil)
+                self.present(mlController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        
+        
+        /// Изменение положения головки проигрывателя
+        player.rx.relativeTimer
+            .bind(to: disk.rx.playHeadPosition)
+            .disposed(by: disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        disk.setPlayHeadPosition(relativeTime: 0)
     }
 }

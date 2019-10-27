@@ -22,6 +22,7 @@ struct MusicList {
     
     /// Получить копрозицию для исполнения
     func getMusic() -> Music {
+        print(list[currentNum])
         return list[currentNum]
     }
     
