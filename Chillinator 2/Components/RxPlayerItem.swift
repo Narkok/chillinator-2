@@ -21,6 +21,6 @@ class RxPlayerItem: AVPlayerItem {
 }
 
 
-extension Observable {
+public extension Observable {
     func asVoid() -> Observable<Void> { return map { _ in () } }
 }

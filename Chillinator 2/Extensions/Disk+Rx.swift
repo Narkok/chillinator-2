@@ -12,10 +12,26 @@ import RxSwift
 import RxCocoa
 
 extension Reactive where Base: Disk {
-    /// Установка позиции головки проигрывателя
+    
+    /// Позиция головки проигрывателя
     var playHeadPosition: Binder<Double> {
-        return Binder(self.base) {
-            disk, time in disk.setPlayHeadPosition(relativeTime: time)
+        return Binder(self.base) { disk, time in
+            disk.setPlayHeadPosition(relativeTime: time)
+        }
+    }
+    
+    
+    /// Обложка диска
+    var coverImage: Binder<String> {
+        return Binder(self.base) { disk, coverUrl in
+            disk.setCover(url: coverUrl)
+        }
+    }
+    
+    
+    var isPlaying: Binder<Bool> {
+        return Binder(self.base) { disk, isPlaying in
+            disk.setState( isPlaying ? .start : .stop )
         }
     }
 }

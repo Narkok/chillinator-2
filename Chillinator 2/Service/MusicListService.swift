@@ -11,30 +11,6 @@ import RxSwift
 import RxCocoa
 
 
-/// Запрос для получения списка песен
-enum MusicListAPIRequest: TargetType {
-    case getList
-    var baseURL: URL { return URL(string: "http://nrkk.ru")! }
-    var path: String { return "chillinator/musicList.json" }
-    var method: Moya.Method { return .get }
-    var task: Task { return .requestPlain }
-    var headers: [String : String]? { return ["Content-Type": "application/json"] }
-    var sampleData: Data { return "{}".data(using: .utf8)! }
-}
-
-
-/// Структура песни
-struct Music: Codable {
-    private let title: String?
-    private let artist: String?
-    private let coverURL: String?
-    private let musicURL: String?
-    
-    var getCoverURL: String { return coverURL ?? "" }
-    var getMusicURL: String { return musicURL ?? "" }
-}
-
-
 /// Сервис для получения списка песен
 class MusicListService {
     

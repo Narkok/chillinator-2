@@ -16,13 +16,13 @@ class PlayerViewModel {
     let output: Output
     
     struct Input {
-        let play = PublishRelay<Void>()
         let change = PublishRelay<MusicList.ChangeType>()
     }
     
     struct Output {
         let music: Observable<Music>
         let musicList: Observable<MusicList>
+        let isPlaying: Observable<Bool>
     }
 
     init(data: [Music]) {
@@ -36,10 +36,16 @@ class PlayerViewModel {
                 return list
             }
             .startWith(initialMusicList)
+            .share()
         
         /// Текущая композиция
-        let music = musicList.map { $0.getMusic() }
+        let music = musicList.map { $0.getMusic() }.distinctUntilChanged()
         
-        output = Output(music: music, musicList: musicList)
+        /// Состояние текущей композиции
+        let isPlaying = musicList.map { $0.isPlaying }.distinctUntilChanged()
+        
+        output = Output(music: music,
+                        musicList: musicList,
+                        isPlaying: isPlaying)
     }
 }

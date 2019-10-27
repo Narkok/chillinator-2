@@ -23,4 +23,22 @@ extension Reactive where Base: AVPlayer {
             return Disposables.create { self.base.removeTimeObserver(timer) }
         }
     }
+    
+    
+    /// Не знаю как эту штуку назвать ¯\_(ツ)_/¯
+    public var playerItem: Binder<AVPlayerItem> {
+        return Binder(self.base) { player, playerItem in
+            player.replaceCurrentItem(with: playerItem)
+        }
+    }
+    
+    
+    /// Состояние плеера
+    public var play: Binder<Bool> {
+        return Binder(self.base) { player, isPlaying in
+            isPlaying ? player.play() : player.pause()
+        }
+    }
+    
 }
+

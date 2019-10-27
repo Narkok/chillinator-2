@@ -14,15 +14,18 @@ struct MusicList {
     /// Номер текущей композиции
     private(set) var currentNum: Int
     
+    ///
+    var isPlaying: Bool
+    
     init(from data: [Music]) {
         list = data.shuffled()
         currentNum = 0
+        isPlaying = false
     }
 
     
     /// Получить копрозицию для исполнения
     func getMusic() -> Music {
-        print(list[currentNum])
         return list[currentNum]
     }
     
@@ -31,7 +34,9 @@ struct MusicList {
     mutating func changeMusic(by changeType: ChangeType) {
         switch changeType {
         case .setNext: currentNum = (currentNum + 1) % list.count
-        case .set(let num): currentNum = num < list.count ? num : 0 }
+        case .set(let num): currentNum = num < list.count ? num : 0
+        case .changeState: isPlaying = !isPlaying
+        }
     }
     
     
@@ -41,5 +46,7 @@ struct MusicList {
         case setNext
         /// Композиция под номером
         case set(num: Int)
+        ///
+        case changeState
     }
 }

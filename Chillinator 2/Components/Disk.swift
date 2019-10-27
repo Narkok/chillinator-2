@@ -17,11 +17,12 @@ import Kingfisher
     @IBInspectable private var pipkaImage: UIImage = UIImage()
     @IBInspectable private var playheadImage: UIImage = UIImage()
     
-    private let discImageView     = UIImageView()
-    private let shine1ImageView   = UIImageView()
+    private let discImageLayer     = CALayer()
+    private let pipkaImageView    = CALayer()
+    private let shine1ImageLayer   = CALayer()
+    private let shine2ImageLayer   = CALayer()
+    
     private let coverImageView    = UIImageView()
-    private let shine2ImageView   = UIImageView()
-    private let pipkaImageView    = UIImageView()
     private let playHeadImageView = UIImageView()
 
     private var shine1RotAngle = CGFloat.random(in: -CGFloat.pi...CGFloat.pi)
@@ -30,29 +31,29 @@ import Kingfisher
     private var coverRotAngle  = CGFloat.zero
     
     override func draw(_ rect: CGRect) {
-        self.addSubview(discImageView)
-        self.addSubview(shine1ImageView)
-        self.addSubview(shine2ImageView)
+        self.layer.addSublayer(discImageLayer)
+        self.layer.addSublayer(shine1ImageLayer)
+        self.layer.addSublayer(shine2ImageLayer)
         self.addSubview(coverImageView)
-        self.addSubview(pipkaImageView)
+        self.layer.addSublayer(pipkaImageView)
         self.addSubview(playHeadImageView)
         
         /// Установка фона диска
-        discImageView.image     = backgroundImage
-        discImageView.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
-        discImageView.rotate(by: discRotAngle)
-        discImageView.layer.shadowColor   = UIColor.black.cgColor
-        discImageView.layer.shadowRadius  = 15
-        discImageView.layer.shadowOpacity = 0.7
+        discImageLayer.contents  = backgroundImage.cgImage
+        discImageLayer.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
+        discImageLayer.rotate(by: discRotAngle)
+        discImageLayer.shadowColor   = UIColor.black.cgColor
+        discImageLayer.shadowRadius  = 15
+        discImageLayer.shadowOpacity = 0.7
         
         /// Установка бликов
-        shine1ImageView.image     = shineImage
-        shine1ImageView.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
-        shine1ImageView.rotate(by: shine1RotAngle)
+        shine1ImageLayer.contents  = shineImage.cgImage
+        shine1ImageLayer.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
+        shine1ImageLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: shine1RotAngle))
         
-        shine2ImageView.image     = shineImage
-        shine2ImageView.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
-        shine2ImageView.rotate(by: shine2RotAngle)
+        shine2ImageLayer.contents  = shineImage.cgImage
+        shine2ImageLayer.bounds    = CGRect(x: 0, y: 0, width: size, height: size)
+        shine2ImageLayer.transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: shine2RotAngle))
         
         /// Установка обложки песни
         let coverImageSize           = Int(Double(size) * 0.4)
@@ -61,11 +62,11 @@ import Kingfisher
         coverImageView.layer.cornerRadius = CGFloat(coverImageSize)/2
         
         /// Установка центральной оси
-        pipkaImageView.layer.allowsEdgeAntialiasing = true
+        pipkaImageView.allowsEdgeAntialiasing = true
         pipkaImageView.bounds = CGRect(x: 0, y: 0, width: size / 35, height: size / 35)
-        pipkaImageView.clipsToBounds = true
-        pipkaImageView.layer.cornerRadius = size / 70
-        pipkaImageView.image = pipkaImage
+        pipkaImageView.masksToBounds = true
+        pipkaImageView.cornerRadius = size / 70
+        pipkaImageView.contents  = pipkaImage.cgImage
         
         /// Установка головки проигрывателя
         let ratioSize: CGFloat = 21.6
@@ -80,12 +81,12 @@ import Kingfisher
     
     
     /// Анимированная установка новой обложки
-    func setCover(coverURL: String){
+    func setCover(url: String){
         let duration = 0.4
         /// Затемнить обложку
         coverImageView.fadeOut(withDuration: duration)
         Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [unowned self] _ in
-            guard let url = URL(string: coverURL) else { return }
+            guard let url = URL(string: url) else { return }
             /// Загрузить новую обложку
             self.coverImageView.kf.setImage(with: url) { [unowned self] _ in
                 /// Показать новую обложку
@@ -110,27 +111,27 @@ import Kingfisher
             
         /// Анимация вращения диска
         case .start:
-            setRotatingAnimation(to: discImageView, duration: 20, startAngle: discRotAngle, direction: 1)
-            setRotatingAnimation(to: coverImageView, duration: 10, startAngle: coverRotAngle, direction: 1)
-            setRotatingAnimation(to: shine1ImageView, duration: 50, startAngle: shine1RotAngle, direction: 1)
-            setRotatingAnimation(to: shine2ImageView, duration: 60, startAngle: shine2RotAngle,  direction: -1)
+            setRotatingAnimation(to: discImageLayer, duration: 20, startAngle: discRotAngle, direction: 1)
+            setRotatingAnimation(to: shine1ImageLayer, duration: 50, startAngle: shine1RotAngle, direction: 1)
+            setRotatingAnimation(to: shine2ImageLayer, duration: 60, startAngle: shine2RotAngle,  direction: -1)
+            setRotatingAnimation(to: coverImageView.layer, duration: 10, startAngle: coverRotAngle, direction: 1)
            
         /// Анимация остановки диска
         case .stop:
-            coverRotAngle  = stopRotatingAnimation(at: coverImageView)
-            shine1RotAngle = stopRotatingAnimation(at: shine1ImageView)
-            discRotAngle   = stopRotatingAnimation(at: discImageView)
-            shine2RotAngle = stopRotatingAnimation(at: shine2ImageView)
+            coverRotAngle  = stopRotatingAnimation(at: coverImageView.layer)
+            shine1RotAngle = stopRotatingAnimation(at: shine1ImageLayer)
+            discRotAngle   = stopRotatingAnimation(at: discImageLayer)
+            shine2RotAngle = stopRotatingAnimation(at: shine2ImageLayer)
         }
     }
     
     
     /// Остановка анимации вращения
-    private func stopRotatingAnimation(at object: UIView) -> CGFloat {
+    private func stopRotatingAnimation(at object: CALayer) -> CGFloat {
         /// Сохранение текущего угла поворота
-        let rotAngle = object.layer.presentation()?.value(forKeyPath: "transform.rotation") as! CGFloat
+        let rotAngle = object.presentation()?.value(forKeyPath: "transform.rotation") as! CGFloat
         /// Удаление анимации
-        object.layer.removeAllAnimations()
+        object.removeAllAnimations()
         /// Поворот на сохранённый угол
         object.rotate(by: rotAngle)
         return rotAngle
@@ -138,14 +139,14 @@ import Kingfisher
     
     
     /// Запуск анимации вращения
-    private func setRotatingAnimation(to object: UIView, duration: Double, startAngle: CGFloat, direction: CGFloat) {
+    private func setRotatingAnimation(to object: CALayer, duration: Double, startAngle: CGFloat, direction: CGFloat) {
         let animation            = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue      = startAngle
         animation.toValue        = startAngle + 2 * CGFloat.pi * direction
         animation.duration       = duration
         animation.repeatCount    = Float.infinity
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
-        object.layer.add(animation, forKey: "rotatingAnimation")
+        object.add(animation, forKey: "rotatingAnimation")
     }
     
     

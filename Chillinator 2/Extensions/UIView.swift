@@ -42,3 +42,12 @@ extension UIView {
         transform = CGAffineTransform(rotationAngle: angle)
     }
 }
+
+
+extension CALayer {
+    /// Поворот CALayer
+    /// - parameter angle: Угол поворота
+    func rotate(by angle: CGFloat) {
+        transform = CATransform3DMakeAffineTransform(CGAffineTransform(rotationAngle: angle))
+    }
+}
