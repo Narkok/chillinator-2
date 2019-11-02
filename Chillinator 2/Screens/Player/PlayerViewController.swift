@@ -28,9 +28,6 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// Продолжать играть в фоновом режиме
-        UIApplication.shared.beginReceivingRemoteControlEvents()
-        
         /// Настройка экрана
         setupView()
     }
@@ -129,10 +126,10 @@ class PlayerViewController: UIViewController {
         listButton.rx.tap.withLatestFrom(viewModel.output.musicList)
             .subscribe(onNext: { [unowned self] musicList in
                 let mlController = MusicListViewController()
+                mlController.modalPresentationStyle = .formSheet
                 mlController.viewModel = MusicListViewModel(data: musicList)
                 self.present(mlController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
 }
-

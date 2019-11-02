@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let startScreenViewController = StartScreenViewController()
         window!.rootViewController = startScreenViewController
         window!.makeKeyAndVisible()
+        
+        /// Продолжать играть в фоновом режиме
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        let audioSession = AVAudioSession.sharedInstance()
+        do { try audioSession.setCategory(.playback) }
+        catch { }
+        
         return true
     }
 }

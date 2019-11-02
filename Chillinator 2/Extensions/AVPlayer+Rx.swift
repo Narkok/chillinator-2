@@ -39,6 +39,4 @@ extension Reactive where Base: AVPlayer {
             isPlaying ? player.play() : player.pause()
         }
     }
-    
 }
-
