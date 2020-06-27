@@ -26,26 +26,30 @@ class StartScreenViewController: UIViewController {
             .disposed(by: disposeBag)
         
         /// Переход к плееру
-        viewModel.output.didFinishLoading
+        viewModel.output.musicList
             .delay(.seconds(2))
-            .withLatestFrom(viewModel.output.musicList)
             .drive(onNext:{ [weak self] musicList in
                 let playerController = PlayerViewController()
                 playerController.modalPresentationStyle = .overFullScreen
-                playerController.viewModel = PlayerViewModel(data: musicList)
+                playerController.viewModel = PlayerViewModel(musicList: musicList)
                 self?.present(playerController, animated: false)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     
     /// Анимация лого
     private func animateLogo() {
+        func addKeyframe(startTime: Double, rotateDirection: CGFloat) {
+            UIView.addKeyframe(withRelativeStartTime: startTime, relativeDuration: 0.2, animations: { [weak logo] in logo?.rotate(by: rotateDirection * CGFloat.pi / 40) })
+        }
+        
         UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: .calculationModeLinear, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by: -CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by:  CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by: -CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by:  CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by: 0) })
+            addKeyframe(startTime: 0.0, rotateDirection: -1)
+            addKeyframe(startTime: 0.2, rotateDirection:  1)
+            addKeyframe(startTime: 0.4, rotateDirection: -1)
+            addKeyframe(startTime: 0.6, rotateDirection:  1)
+            addKeyframe(startTime: 0.8, rotateDirection:  0)
         }) { [weak self] _ in self?.logo.fadeOut() }
     }
 }

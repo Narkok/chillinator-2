@@ -25,6 +25,12 @@ extension Reactive where Base: AVPlayer {
     }
     
     
+    /// Текущая кассета
+    public var currentItem: Observable<AVPlayerItem?> {
+        return observe(AVPlayerItem.self, #keyPath(AVPlayer.currentItem))
+    }
+    
+    
     /// Не знаю как эту штуку назвать ¯\_(ツ)_/¯
     public var playerItem: Binder<AVPlayerItem> {
         return Binder(self.base) { player, playerItem in

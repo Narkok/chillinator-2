@@ -23,8 +23,10 @@ class PlayerViewController: UIViewController {
     
     var viewModel: PlayerViewModel?
     
-    let player = AVPlayer()
-    let disposeBag = DisposeBag()
+    private var playerItem: AVPlayerItem?
+    private let player = AVPlayer()
+    
+    private let disposeBag = DisposeBag()
     
     
     override func viewDidLoad() {
@@ -72,6 +74,12 @@ class PlayerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
+        /// Кнопка списка композиций
+        listButton.rx.tap
+            .bind(to: viewModel.input.showList)
+            .disposed(by: disposeBag)
+        
+        
         /// Установка обложки
         viewModel.output.music
             .map { $0.coverURL ?? "" }
@@ -96,19 +104,11 @@ class PlayerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
-        /// Запуск следующей песни по окончанию текущей
-//        viewModel.output.music.subscribe(onNext:{ [unowned self] music in
-//            playerItem.didPlayToEndTime.map { .setNext }
-//                .bind(to: viewModel.input.change)
-//                .disposed(by: playerItem.disposeBag)
-//        }).disposed(by: disposeBag)
-        
-        
         /// Установка новой песни в плеер
         viewModel.output.music
             .map { $0.getMusicURL }
             .filterNil()
-            .map { RxPlayerItem(url: $0) }
+            .map { AVPlayerItem(url: $0) }
             .drive(player.rx.playerItem)
             .disposed(by: disposeBag)
         
@@ -121,6 +121,7 @@ class PlayerViewController: UIViewController {
         
         /// Сменить картинку на кнопке
         viewModel.output.isPlaying
+            .distinctUntilChanged()
             .map { UIImage(named: $0 ? "pauseButton" : "playButton") }
             .drive(playButton.rx.image())
             .disposed(by: disposeBag)
@@ -128,6 +129,7 @@ class PlayerViewController: UIViewController {
         
         /// Запуск / остановка диска
         viewModel.output.isPlaying
+            .distinctUntilChanged()
             .drive(disk.rx.isPlaying)
             .disposed(by: disposeBag)
         
@@ -137,10 +139,20 @@ class PlayerViewController: UIViewController {
             .bind(to: disk.rx.playHeadPosition)
             .disposed(by: disposeBag)
         
+        
+        /// Запуск следующей композиции по окончанию текущей
+        player.rx.currentItem
+            .filterNil()
+            .distinctUntilChanged()
+            .flatMapLatest { $0.rx.didPlayToEnd }
+            .map { MusicList.ChangeType.setNext }
+            .bind(to: viewModel.input.change)
+            .disposed(by: disposeBag)
+        
 
         /// Открыть контроллер со списком композиций
-        listButton.rx.tap.withLatestFrom(viewModel.output.musicList)
-            .subscribe(onNext: { [weak self] musicList in
+        viewModel.output.musicList
+            .drive(onNext:{ [weak self] musicList in
                 let mlController = MusicListViewController()
                 mlController.modalPresentationStyle = .formSheet
                 mlController.viewModel = MusicListViewModel(data: musicList)

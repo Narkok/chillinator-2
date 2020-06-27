@@ -92,12 +92,14 @@ import Kingfisher
         let duration = 0.4
         /// Затемнить обложку
         coverImageView.fadeOut(withDuration: duration)
-        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [unowned self] _ in
+        Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
+            self?.coverImageView.image = nil
             guard let url = URL(string: url) else { return }
+            
             /// Загрузить новую обложку
-            self.coverImageView.kf.setImage(with: url) { [unowned self] _ in
+            self?.coverImageView.kf.setImage(with: url) { [weak self] _ in
                 /// Показать новую обложку
-                self.coverImageView.fadeIn(withDuration: duration)
+                self?.coverImageView.fadeIn(withDuration: duration)
             }
         }
     }
@@ -136,7 +138,7 @@ import Kingfisher
     /// Остановка анимации вращения
     private func stopRotatingAnimation(at object: CALayer) -> CGFloat {
         /// Сохранение текущего угла поворота
-        let rotAngle = object.presentation()?.value(forKeyPath: "transform.rotation") as! CGFloat
+        let rotAngle = object.presentation()?.value(forKeyPath: "transform.rotation") as? CGFloat ?? 0
         /// Удаление анимации
         object.removeAllAnimations()
         /// Поворот на сохранённый угол

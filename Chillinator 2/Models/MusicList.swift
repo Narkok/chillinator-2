@@ -1,5 +1,5 @@
 //
-//  PlayerModel.swift
+//  MusicList.swift
 //  Chillinator 2
 //
 //  Created by Narek Stepanyan on 20/10/2019.

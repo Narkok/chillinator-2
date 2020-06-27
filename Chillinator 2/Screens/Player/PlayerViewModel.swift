@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
 class PlayerViewModel {
     
     let input = Input()
@@ -17,18 +18,20 @@ class PlayerViewModel {
     
     struct Input {
         let change = PublishRelay<MusicList.ChangeType>()
+        let showList = PublishRelay<Void>()
+        let didPlayToEnd = PublishRelay<Void>()
     }
     
     struct Output {
         let music: Driver<Music>
-        let musicList: Observable<MusicList>
+        let musicList: Driver<MusicList>
         let isPlaying: Driver<Bool>
     }
 
-    init(data: [Music]) {
+    
+    init(musicList initialMusicList: MusicList) {
         
         /// Список песен
-        let initialMusicList = MusicList(from: data)
         let musicList = input.change
             .scan(initialMusicList) { list, changeType in
                 var list = list
@@ -36,22 +39,29 @@ class PlayerViewModel {
                 return list
             }
             .startWith(initialMusicList)
-            .share()
+            .share(replay: 1)
         
         /// Текущая композиция
         let music = musicList
             .map { $0.currentMusic() }
             .filterNil()
             .distinctUntilChanged()
+            .share(replay: 1)
+            .asDriver()
         
         /// Состояние текущей композиции
         let isPlaying = musicList
             .map { $0.isPlaying }
-            .distinctUntilChanged()
             .share(replay: 1)
+            .asDriver()
         
-        output = Output(music: music.asDriver(),
-                        musicList: musicList,
-                        isPlaying: isPlaying.asDriver())
+        let openList = input.showList
+            .withLatestFrom(musicList)
+            .share(replay: 1)
+            .asDriver()
+        
+        output = Output(music: music,
+                        musicList: openList,
+                        isPlaying: isPlaying)
     }
 }
