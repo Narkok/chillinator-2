@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.0)
   - Kingfisher (5.7.1)
+  - MarqueeLabel (4.0.2)
   - Moya (13.0.1):
     - Moya/Core (= 13.0.1)
   - Moya/Core (13.0.1):
@@ -16,12 +17,13 @@ PODS:
 
 DEPENDENCIES:
   - Kingfisher (~> 5.0)
+  - MarqueeLabel
   - Moya (~> 13.0)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Kingfisher
     - Moya
@@ -29,16 +31,19 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+  trunk:
+    - MarqueeLabel
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
+  MarqueeLabel: f762aa681ae201f66c1d511858b171f75d83013a
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: 214982f4e1009bae85199ac500b9c405953b6332
+PODFILE CHECKSUM: 2554c49f8a2a4c8d2b5cdc58ec857ded37e5b113
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4

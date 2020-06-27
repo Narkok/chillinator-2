@@ -19,8 +19,3 @@ class RxPlayerItem: AVPlayerItem {
         return NotificationCenter.default.rx.notification(.AVPlayerItemDidPlayToEndTime, object: self).asVoid()
     }
 }
-
-
-public extension Observable {
-    func asVoid() -> Observable<Void> { return map { _ in () } }
-}

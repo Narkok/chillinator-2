@@ -7,4 +7,5 @@ target 'Chillinator 2' do
   pod 'RxCocoa', '~> 5'
   pod 'Moya', '~> 13.0'
   pod 'Kingfisher', '~> 5.0'
+  pod 'MarqueeLabel'
 end

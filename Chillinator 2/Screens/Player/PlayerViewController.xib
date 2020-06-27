@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="Chillinator_2" customModuleProvider="target">
             <connections>
+                <outlet property="artistLabel" destination="lPS-c7-elQ" id="7WW-Cw-dVo"/>
                 <outlet property="disk" destination="lct-Ov-0k7" id="zY7-kN-myD"/>
                 <outlet property="listButton" destination="U1L-zp-zUQ" id="oxd-hc-0VD"/>
                 <outlet property="nextButton" destination="S2k-o3-r1o" id="ZvK-iJ-H3y"/>
                 <outlet property="playButton" destination="2az-v4-nLr" id="gHZ-V2-h2b"/>
+                <outlet property="titleLabel" destination="07g-v1-D0a" id="FoP-iQ-5M7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-st-BbK">
-                    <rect key="frame" x="20" y="662" width="335" height="100"/>
+                    <rect key="frame" x="20" y="692" width="374" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTJ-IK-3k9">
-                            <rect key="frame" x="0.0" y="0.0" width="111.66666666666667" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="124.5" height="100"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1L-zp-zUQ">
-                                    <rect key="frame" x="24" y="18" width="64" height="64"/>
+                                    <rect key="frame" x="30.5" y="18" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="llI-fe-rkX"/>
                                         <constraint firstAttribute="width" constant="64" id="otc-2h-tye"/>
@@ -44,10 +46,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-ou-MDR">
-                            <rect key="frame" x="111.66666666666666" y="0.0" width="111.66666666666666" height="100"/>
+                            <rect key="frame" x="124.5" y="0.0" width="125" height="100"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2az-v4-nLr">
-                                    <rect key="frame" x="24" y="18" width="64" height="64"/>
+                                    <rect key="frame" x="30.5" y="18" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="64" id="9QA-s0-feE"/>
                                         <constraint firstAttribute="height" constant="64" id="NDu-Vl-kRT"/>
@@ -62,10 +64,10 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPV-pM-sOc">
-                            <rect key="frame" x="223.33333333333334" y="0.0" width="111.66666666666666" height="100"/>
+                            <rect key="frame" x="249.5" y="0.0" width="124.5" height="100"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S2k-o3-r1o">
-                                    <rect key="frame" x="23.999999999999972" y="18" width="64" height="64"/>
+                                    <rect key="frame" x="30" y="18" width="64" height="64"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="64" id="fW5-DD-iHF"/>
                                         <constraint firstAttribute="width" constant="64" id="o2T-Ra-6Vn"/>
@@ -84,10 +86,13 @@
                         <constraint firstAttribute="height" constant="100" id="VhY-aM-t2N"/>
                     </constraints>
                 </stackView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lct-Ov-0k7" customClass="Disk" customModule="Chillinator_2" customModuleProvider="target">
-                    <rect key="frame" x="114" y="240" width="175" height="173"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lct-Ov-0k7" customClass="Disk" customModule="Chillinator_2" customModuleProvider="target">
+                    <rect key="frame" x="114" y="240" width="175" height="175"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="175" id="Dxz-3f-lql"/>
+                        <constraint firstAttribute="height" constant="175" id="hfK-SN-kgf"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="disc"/>
                         <userDefinedRuntimeAttribute type="image" keyPath="shineImage" value="shine"/>
@@ -98,11 +103,79 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07g-v1-D0a" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                    <rect key="frame" x="20" y="422" width="374" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="mp3-LR-68A"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                            <real key="value" value="60"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="NO"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPS-c7-elQ" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                    <rect key="frame" x="20" y="467" width="374" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="VUx-ec-83g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                            <real key="value" value="40"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                            <real key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.094117647058823528" green="0.094117647058823528" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sLH-st-BbK" secondAttribute="bottom" constant="16" id="GRf-fg-Mlu"/>
+                <constraint firstItem="lPS-c7-elQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7M7-Wm-kQY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sLH-st-BbK" secondAttribute="bottom" constant="70" id="GRf-fg-Mlu"/>
+                <constraint firstItem="07g-v1-D0a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="I2Y-Fx-lku"/>
+                <constraint firstItem="lct-Ov-0k7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="114" id="NmB-g1-p6X"/>
+                <constraint firstItem="07g-v1-D0a" firstAttribute="top" secondItem="lct-Ov-0k7" secondAttribute="bottom" constant="7" id="YMV-Io-HIv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lPS-c7-elQ" secondAttribute="trailing" constant="20" id="eqX-be-kAc"/>
                 <constraint firstItem="sLH-st-BbK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jii-EB-AVT"/>
+                <constraint firstItem="lct-Ov-0k7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="196" id="kH3-MH-ohc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="07g-v1-D0a" secondAttribute="trailing" constant="20" id="qZI-Pg-Z5W"/>
+                <constraint firstItem="lPS-c7-elQ" firstAttribute="top" secondItem="07g-v1-D0a" secondAttribute="bottom" constant="8" id="wM8-Ws-UFr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sLH-st-BbK" secondAttribute="trailing" constant="20" id="zDR-cG-YRP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

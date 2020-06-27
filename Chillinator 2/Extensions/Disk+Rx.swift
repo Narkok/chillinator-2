@@ -6,10 +6,9 @@
 //  Copyright © 2019 NRKK.DEV. All rights reserved.
 //
 
-import Foundation
-import AVFoundation
 import RxSwift
 import RxCocoa
+
 
 extension Reactive where Base: Disk {
     
@@ -31,7 +30,7 @@ extension Reactive where Base: Disk {
     
     var isPlaying: Binder<Bool> {
         return Binder(self.base) { disk, isPlaying in
-            disk.setState( isPlaying ? .start : .stop )
+            disk.set(state: isPlaying ? .start : .stop )
         }
     }
 }

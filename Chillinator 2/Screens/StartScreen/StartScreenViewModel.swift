@@ -7,32 +7,32 @@
 //
 
 import RxSwift
+import RxCocoa
 
 class StartScreenViewModel {
-    
-    /// Сервис для получения списка песен
-    private static let musicListService = MusicListService()
     
     /// Выходы в контроллер
     let output: Output
 
     struct Output {
         /// Конец загрузки
-        let didFinishLoading: Observable<Void>
+        let didFinishLoading: Driver<Void>
         /// Загруженный список песен
-        let musicList: Observable<[Music]>
+        let musicList: Driver<[Music]>
     }
     
     
-    init() {
+    init(_ provider: MusicListProvider = MusicListService()) {
         /// Cписок песен
-        let musicList = StartScreenViewModel.musicListService.getList()
+        let musicList = provider.list()
             .map { $0.element ?? [] }
             .share()
+            .asDriver()
         
         /// Конец загрузки
         let didFinishLoading = musicList.asVoid()
         
-        output = Output(didFinishLoading: didFinishLoading, musicList: musicList)
+        output = Output(didFinishLoading: didFinishLoading,
+                        musicList: musicList)
     }
 }

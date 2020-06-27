@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 extension UIView {
     
     /// Анимированное изменение прозрачности
@@ -15,8 +16,8 @@ extension UIView {
     /// - parameter duration: Длительность анимации
     func fadeTo(_ alpha: CGFloat, withDuration duration: TimeInterval = 0.4) {
         DispatchQueue.main.async {
-            UIView.animate(withDuration: duration) { [unowned self] in
-                self.alpha = alpha
+            UIView.animate(withDuration: duration) { [weak self] in
+                self?.alpha = alpha
             }
         }
     }

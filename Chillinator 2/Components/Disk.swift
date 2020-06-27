@@ -18,7 +18,7 @@ import Kingfisher
     @IBInspectable private var playheadImage: UIImage = UIImage()
     
     private let discImageLayer     = CALayer()
-    private let pipkaImageView    = CALayer()
+    private let pipkaImageView     = CALayer()
     private let shine1ImageLayer   = CALayer()
     private let shine2ImageLayer   = CALayer()
     
@@ -30,7 +30,14 @@ import Kingfisher
     private var discRotAngle   = CGFloat.random(in: -CGFloat.pi...CGFloat.pi)
     private var coverRotAngle  = CGFloat.zero
     
+    private var isLoaded = false
+    
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        if isLoaded { return }
+        isLoaded = true
+        
         self.layer.addSublayer(discImageLayer)
         self.layer.addSublayer(shine1ImageLayer)
         self.layer.addSublayer(shine2ImageLayer)
@@ -98,16 +105,16 @@ import Kingfisher
     
     /// Установка позиции головки проигрывателя
     func setPlayHeadPosition(relativeTime: Double) {
-        let angle = (CGFloat(relativeTime) - 1) * CGFloat.pi / 12
-        UIView.animate(withDuration: 1) { [unowned self] in
-            self.playHeadImageView.rotate(by: angle)
+        let angle = -CGFloat(relativeTime) * CGFloat.pi / 12
+        UIView.animate(withDuration: 1) { [weak self] in
+            self?.playHeadImageView.rotate(by: angle)
         }
     }
     
 
     /// Изменение состояния диска
-    func setState(_ newState: State) {
-        switch newState {
+    func set(state: State) {
+        switch state {
             
         /// Анимация вращения диска
         case .start:

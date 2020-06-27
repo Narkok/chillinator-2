@@ -6,10 +6,10 @@
 //  Copyright © 2019 NRKK.DEV. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 import RxSwift
 import RxCocoa
+
 
 extension Reactive where Base: AVPlayer {
     

@@ -14,15 +14,17 @@ import AVFoundation
 
 class PlayerViewController: UIViewController {
     
-    var viewModel: PlayerViewModel?
-    
-    let player = AVPlayer()
-    let disposeBag = DisposeBag()
-    
     @IBOutlet weak var disk: Disk!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    
+    var viewModel: PlayerViewModel?
+    
+    let player = AVPlayer()
+    let disposeBag = DisposeBag()
     
     
     override func viewDidLoad() {
@@ -30,11 +32,6 @@ class PlayerViewController: UIViewController {
         
         /// Настройка экрана
         setupView()
-    }
-
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         /// Настройка плеера
         setupPlayer()
@@ -56,7 +53,6 @@ class PlayerViewController: UIViewController {
     private func setupPlayer() {
         /// Инициализация плеера
         view.layer.addSublayer(AVPlayerLayer(player: player))
-        disk.setPlayHeadPosition(relativeTime: 0)
     }
     
     
@@ -77,8 +73,26 @@ class PlayerViewController: UIViewController {
         
         
         /// Установка обложки
-        viewModel.output.music.map { $0.getCoverURL }
-            .bind(to: disk.rx.coverImage)
+        viewModel.output.music
+            .map { $0.coverURL ?? "" }
+            .asDriver()
+            .drive(disk.rx.coverImage)
+            .disposed(by: disposeBag)
+        
+        
+        /// Установка заголовка
+        viewModel.output.music
+            .map { $0.title }
+            .delay(.milliseconds(200))
+            .drive(titleLabel.rx.smoothChangeText)
+            .disposed(by: disposeBag)
+        
+        
+        /// Установка исполнителя
+        viewModel.output.music
+            .map { $0.artist }
+            .delay(.milliseconds(400))
+            .drive(artistLabel.rx.smoothChangeText)
             .disposed(by: disposeBag)
         
         
@@ -91,28 +105,30 @@ class PlayerViewController: UIViewController {
         
         
         /// Установка новой песни в плеер
-        viewModel.output.music.map { $0.getMusicURL }.filter { $0 != nil }.map { $0! }
+        viewModel.output.music
+            .map { $0.getMusicURL }
+            .filterNil()
             .map { RxPlayerItem(url: $0) }
-            .bind(to: player.rx.playerItem)
+            .drive(player.rx.playerItem)
             .disposed(by: disposeBag)
         
         
         /// Запуск / остановка плеера
         viewModel.output.isPlaying
-            .bind(to: player.rx.play)
+            .drive(player.rx.play)
             .disposed(by: disposeBag)
         
         
         /// Сменить картинку на кнопке
         viewModel.output.isPlaying
             .map { UIImage(named: $0 ? "pauseButton" : "playButton") }
-            .bind(to: playButton.rx.image())
+            .drive(playButton.rx.image())
             .disposed(by: disposeBag)
         
         
         /// Запуск / остановка диска
         viewModel.output.isPlaying
-            .bind(to: disk.rx.isPlaying)
+            .drive(disk.rx.isPlaying)
             .disposed(by: disposeBag)
         
         
@@ -124,11 +140,11 @@ class PlayerViewController: UIViewController {
 
         /// Открыть контроллер со списком композиций
         listButton.rx.tap.withLatestFrom(viewModel.output.musicList)
-            .subscribe(onNext: { [unowned self] musicList in
+            .subscribe(onNext: { [weak self] musicList in
                 let mlController = MusicListViewController()
                 mlController.modalPresentationStyle = .formSheet
                 mlController.viewModel = MusicListViewModel(data: musicList)
-                self.present(mlController, animated: true, completion: nil)
+                self?.present(mlController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

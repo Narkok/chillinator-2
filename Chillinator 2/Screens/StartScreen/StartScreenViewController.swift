@@ -22,18 +22,18 @@ class StartScreenViewController: UIViewController {
         
         /// Анимация лого
         viewModel.output.didFinishLoading
-            .subscribe(onNext:{ [unowned self] in self.animateLogo()})
+            .drive(onNext:{ [weak self] in self?.animateLogo()})
             .disposed(by: disposeBag)
         
         /// Переход к плееру
         viewModel.output.didFinishLoading
-            .delay(.seconds(2), scheduler: MainScheduler.instance)
+            .delay(.seconds(2))
             .withLatestFrom(viewModel.output.musicList)
-            .subscribe(onNext:{ [unowned self] musicList in
+            .drive(onNext:{ [weak self] musicList in
                 let playerController = PlayerViewController()
                 playerController.modalPresentationStyle = .overFullScreen
                 playerController.viewModel = PlayerViewModel(data: musicList)
-                self.present(playerController, animated: false)
+                self?.present(playerController, animated: false)
             }).disposed(by: disposeBag)
     }
     
@@ -41,11 +41,11 @@ class StartScreenViewController: UIViewController {
     /// Анимация лого
     private func animateLogo() {
         UIView.animateKeyframes(withDuration: 1.5, delay: 0, options: .calculationModeLinear, animations: {
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2, animations: { [unowned self] in self.logo.rotate(by: -CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2, animations: { [unowned self] in self.logo.rotate(by:  CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.2, animations: { [unowned self] in self.logo.rotate(by: -CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2, animations: { [unowned self] in self.logo.rotate(by:  CGFloat.pi / 40) })
-            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: { [unowned self] in self.logo.rotate(by: 0) })
-        }) { _ in self.logo.fadeOut() }
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by: -CGFloat.pi / 40) })
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by:  CGFloat.pi / 40) })
+            UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by: -CGFloat.pi / 40) })
+            UIView.addKeyframe(withRelativeStartTime: 0.6, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by:  CGFloat.pi / 40) })
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2, animations: { [weak self] in self?.logo.rotate(by: 0) })
+        }) { [weak self] _ in self?.logo.fadeOut() }
     }
 }

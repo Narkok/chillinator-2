@@ -24,9 +24,9 @@ struct MusicList {
     }
 
     
-    /// Получить копрозицию для исполнения
-    func getMusic() -> Music {
-        return list[currentNum]
+    /// Текущая композиция для исполнения
+    func currentMusic() -> Music? {
+        return list[safe: currentNum]
     }
     
     

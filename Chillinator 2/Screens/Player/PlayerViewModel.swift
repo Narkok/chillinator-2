@@ -20,9 +20,9 @@ class PlayerViewModel {
     }
     
     struct Output {
-        let music: Observable<Music>
+        let music: Driver<Music>
         let musicList: Observable<MusicList>
-        let isPlaying: Observable<Bool>
+        let isPlaying: Driver<Bool>
     }
 
     init(data: [Music]) {
@@ -39,13 +39,19 @@ class PlayerViewModel {
             .share()
         
         /// Текущая композиция
-        let music = musicList.map { $0.getMusic() }.distinctUntilChanged()
+        let music = musicList
+            .map { $0.currentMusic() }
+            .filterNil()
+            .distinctUntilChanged()
         
         /// Состояние текущей композиции
-        let isPlaying = musicList.map { $0.isPlaying }.distinctUntilChanged()
+        let isPlaying = musicList
+            .map { $0.isPlaying }
+            .distinctUntilChanged()
+            .share(replay: 1)
         
-        output = Output(music: music,
+        output = Output(music: music.asDriver(),
                         musicList: musicList,
-                        isPlaying: isPlaying)
+                        isPlaying: isPlaying.asDriver())
     }
 }

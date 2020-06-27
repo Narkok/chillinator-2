@@ -12,29 +12,34 @@ import RxCocoa
 
 
 /// Сервис для получения списка песен
-class MusicListService {
+struct MusicListService: MusicListProvider {
     
     static private let provider = MoyaProvider<MusicListAPIRequest>()
-    private let musicList = PublishRelay<Event<[Music]>>()
     
     /// Получить список песен
-    func getList() -> Observable<Event<[Music]>> {
-        MusicListService.provider.request(.getList, completion: { [unowned self] result in
+    func list() -> Observable<Event<[Music]>> {
+        let resultList = PublishRelay<Event<[Music]>>()
+        MusicListService.provider.request(.getList, completion: { result in
             switch result {
             case .success(let response):
                 do {
                     let data = try JSONDecoder().decode([Music].self, from: response.data)
-                    self.musicList.accept(.next(data))
+                    resultList.accept(.next(data))
                 }
-                catch { self.musicList.accept(.error(ServiceError(message: error.localizedDescription))) }
-            case .failure: self.musicList.accept(.error(ServiceError(message: "Ошибка при запросе данных")))
+                catch { resultList.accept(.error(ServiceError(message: error.localizedDescription))) }
+            case .failure: resultList.accept(.error(ServiceError(message: "Ошибка при запросе данных")))
             }
         })
-        return musicList.asObservable()
+        return resultList.asObservable()
     }
     
     
     struct ServiceError: Error {
         let message: String
     }
+}
+
+
+protocol MusicListProvider {
+    func list() -> Observable<Event<[Music]>>
 }

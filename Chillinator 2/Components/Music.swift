@@ -9,18 +9,21 @@
 import Foundation
 
 
-/// Структура песни
+/// Композиция
 struct Music: Codable, Equatable {
     
-    private let title: String?
-    private let artist: String?
-    private let coverURL: String?
-    private let musicURL: String?
+    /// Заголовок
+    let title: String?
+    
+    /// Исполнитель
+    let artist: String?
     
     /// URL обложки композиции
-    var getCoverURL: String { return coverURL ?? "" }
+    let coverURL: String?
     
     /// URL композиции
+    private let musicURL: String?
+
     var getMusicURL: URL? {
         guard let musicURL = musicURL else { return nil }
         return URL(string: musicURL)
