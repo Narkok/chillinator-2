@@ -80,6 +80,23 @@ class PlayerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         
+        /// Изменение положения головки проигрывателя
+        player.rx.relativeTimer
+            .distinctUntilChanged()
+            .bind(to: disk.rx.playHeadPosition)
+            .disposed(by: disposeBag)
+        
+        
+        /// Запуск следующей композиции по окончанию текущей
+        player.rx.currentItem
+            .filterNil()
+            .distinctUntilChanged()
+            .flatMapLatest { $0.rx.didPlayToEnd }
+            .map { .setNext }
+            .bind(to: viewModel.input.change)
+            .disposed(by: disposeBag)
+        
+        
         /// Установка обложки
         viewModel.output.music
             .map { $0.coverURL ?? "" }
@@ -130,23 +147,6 @@ class PlayerViewController: UIViewController {
         viewModel.output.isPlaying
             .distinctUntilChanged()
             .drive(disk.rx.isPlaying)
-            .disposed(by: disposeBag)
-        
-        
-        /// Изменение положения головки проигрывателя
-        player.rx.relativeTimer
-            .distinctUntilChanged()
-            .bind(to: disk.rx.playHeadPosition)
-            .disposed(by: disposeBag)
-        
-        
-        /// Запуск следующей композиции по окончанию текущей
-        player.rx.currentItem
-            .filterNil()
-            .distinctUntilChanged()
-            .flatMapLatest { $0.rx.didPlayToEnd }
-            .map { .setNext }
-            .bind(to: viewModel.input.change)
             .disposed(by: disposeBag)
         
 

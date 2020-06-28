@@ -18,24 +18,24 @@ class StartScreenViewModel {
         /// Конец загрузки
         let didFinishLoading: Driver<Void>
         /// Загруженный список песен
-        let musicList: Driver<Player>
+        let player: Driver<Player>
     }
     
     
     init(_ provider: MusicListProvider = MusicListService()) {
         
         /// Cписок песен
-        let musicList = provider.list()
+        let player = provider.list()
             .map { $0.element ?? [] }
             .map { Player(with: $0) }
             .share()
             .asDriver()
         
         /// Конец загрузки
-        let didFinishLoading = musicList
+        let didFinishLoading = player
             .asVoid()
         
         output = Output(didFinishLoading: didFinishLoading,
-                        musicList: musicList)
+                        player: player)
     }
 }

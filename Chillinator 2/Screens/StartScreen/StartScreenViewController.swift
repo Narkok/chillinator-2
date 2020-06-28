@@ -26,12 +26,12 @@ class StartScreenViewController: UIViewController {
             .disposed(by: disposeBag)
         
         /// Переход к плееру
-        viewModel.output.musicList
+        viewModel.output.player
             .delay(.seconds(2))
-            .drive(onNext:{ [weak self] musicList in
+            .drive(onNext:{ [weak self] player in
                 let playerController = PlayerViewController()
                 playerController.modalPresentationStyle = .overFullScreen
-                playerController.viewModel = PlayerViewModel(musicList: musicList)
+                playerController.viewModel = PlayerViewModel(with: player)
                 self?.present(playerController, animated: false)
             })
             .disposed(by: disposeBag)

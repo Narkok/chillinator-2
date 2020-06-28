@@ -107,7 +107,7 @@ import Kingfisher
     
     /// Установка позиции головки проигрывателя
     func setPlayHeadPosition(relativeTime: Double) {
-        let angle = -CGFloat(pow(relativeTime, 0.7)) * CGFloat.pi / 12
+        let angle = -CGFloat(pow(relativeTime, 0.8)) * CGFloat.pi / 12
         let options: UIView.AnimationOptions = relativeTime.isZero ? .curveEaseInOut : .curveLinear
         UIView.animate(withDuration: 1, delay: 0, options: options, animations: { [weak self] in
             self?.playHeadImageView.rotate(by: angle)
