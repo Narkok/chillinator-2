@@ -10,7 +10,7 @@ import Foundation
 
 class MusicListViewModel {
     
-    init(data: MusicList) {
+    init(data: Player) {
         
     }
 }

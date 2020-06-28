@@ -13,7 +13,7 @@ import RxCocoa
 
 /// Запрос для получения списка песен
 enum MusicListAPIRequest: TargetType {
-    case getList
+    case musicList
     var baseURL: URL { return URL(string: "http://nrkk.ru")! }
     var path: String { return "chillinator/musicList.json" }
     var method: Moya.Method { return .get }

@@ -1,12 +1,14 @@
 //
-//  MusicList.swift
+//  Player.swift
 //  Chillinator 2
 //
 //  Created by Narek Stepanyan on 20/10/2019.
 //  Copyright © 2019 NRKK.DEV. All rights reserved.
 //
 
-struct MusicList {
+
+/// 
+struct Player {
     
     /// Список композиций
     let list: [Music]
@@ -17,7 +19,7 @@ struct MusicList {
     ///
     var isPlaying: Bool
     
-    init(from data: [Music]) {
+    init(with data: [Music]) {
         list = data.shuffled()
         currentNum = 0
         isPlaying = false
@@ -31,7 +33,7 @@ struct MusicList {
     
     
     /// Сменить номер композиции
-    mutating func changeMusic(by changeType: ChangeType) {
+    mutating func changeMusic(by changeType: Change) {
         switch changeType {
         case .setNext: currentNum = (currentNum + 1) % list.count
         case .set(let num): currentNum = num < list.count ? num : 0
@@ -41,7 +43,7 @@ struct MusicList {
     
     
     /// Сменить композицию
-    enum ChangeType {
+    enum Change {
         /// Следующая по списку
         case setNext
         /// Композиция под номером

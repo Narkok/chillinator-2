@@ -83,7 +83,6 @@ class PlayerViewController: UIViewController {
         /// Установка обложки
         viewModel.output.music
             .map { $0.coverURL ?? "" }
-            .asDriver()
             .drive(disk.rx.coverImage)
             .disposed(by: disposeBag)
         
@@ -136,6 +135,7 @@ class PlayerViewController: UIViewController {
         
         /// Изменение положения головки проигрывателя
         player.rx.relativeTimer
+            .distinctUntilChanged()
             .bind(to: disk.rx.playHeadPosition)
             .disposed(by: disposeBag)
         
@@ -145,13 +145,13 @@ class PlayerViewController: UIViewController {
             .filterNil()
             .distinctUntilChanged()
             .flatMapLatest { $0.rx.didPlayToEnd }
-            .map { MusicList.ChangeType.setNext }
+            .map { .setNext }
             .bind(to: viewModel.input.change)
             .disposed(by: disposeBag)
         
 
         /// Открыть контроллер со списком композиций
-        viewModel.output.musicList
+        viewModel.output.openList
             .drive(onNext:{ [weak self] musicList in
                 let mlController = MusicListViewController()
                 mlController.modalPresentationStyle = .formSheet

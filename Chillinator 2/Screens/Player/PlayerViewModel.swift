@@ -17,32 +17,32 @@ class PlayerViewModel {
     let output: Output
     
     struct Input {
-        let change = PublishRelay<MusicList.ChangeType>()
+        let change = PublishRelay<Player.Change>()
         let showList = PublishRelay<Void>()
         let didPlayToEnd = PublishRelay<Void>()
     }
     
     struct Output {
         let music: Driver<Music>
-        let musicList: Driver<MusicList>
+        let openList: Driver<Player>
         let isPlaying: Driver<Bool>
     }
 
     
-    init(musicList initialMusicList: MusicList) {
+    init(with initialPlayer: Player) {
         
         /// Список песен
-        let musicList = input.change
-            .scan(initialMusicList) { list, changeType in
+        let player = input.change
+            .scan(initialPlayer) { list, changeType in
                 var list = list
                 list.changeMusic(by: changeType)
                 return list
             }
-            .startWith(initialMusicList)
+            .startWith(initialPlayer)
             .share(replay: 1)
         
         /// Текущая композиция
-        let music = musicList
+        let music = player
             .map { $0.currentMusic() }
             .filterNil()
             .distinctUntilChanged()
@@ -50,18 +50,18 @@ class PlayerViewModel {
             .asDriver()
         
         /// Состояние текущей композиции
-        let isPlaying = musicList
+        let isPlaying = player
             .map { $0.isPlaying }
             .share(replay: 1)
             .asDriver()
         
         let openList = input.showList
-            .withLatestFrom(musicList)
+            .withLatestFrom(player)
             .share(replay: 1)
             .asDriver()
         
         output = Output(music: music,
-                        musicList: openList,
+                        openList: openList,
                         isPlaying: isPlaying)
     }
 }

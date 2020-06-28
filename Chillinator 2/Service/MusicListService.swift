@@ -19,7 +19,7 @@ struct MusicListService: MusicListProvider {
     /// Получить список песен
     func list() -> Observable<Event<[Music]>> {
         let resultList = PublishRelay<Event<[Music]>>()
-        MusicListService.provider.request(.getList, completion: { result in
+        MusicListService.provider.request(.musicList, completion: { result in
             switch result {
             case .success(let response):
                 do {

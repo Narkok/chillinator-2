@@ -22,7 +22,7 @@
 		EB69B593235A49CA008AB703 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B592235A49CA008AB703 /* PlayerViewModel.swift */; };
 		EB69B596235A4A1C008AB703 /* Disk.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B595235A4A1C008AB703 /* Disk.swift */; };
 		EB69B599235A5A51008AB703 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB69B598235A5A51008AB703 /* UIView.swift */; };
-		EB6DD74F235CBE780009B5DF /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DD74E235CBE780009B5DF /* MusicList.swift */; };
+		EB6DD74F235CBE780009B5DF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DD74E235CBE780009B5DF /* Player.swift */; };
 		EB6DD751235CCC670009B5DF /* AVPlayerItem+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6DD750235CCC670009B5DF /* AVPlayerItem+Rx.swift */; };
 		EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB860C78235A460000733FE5 /* AppDelegate.swift */; };
 		EB860C80235A460100733FE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB860C7F235A460100733FE5 /* Assets.xcassets */; };
@@ -52,7 +52,7 @@
 		EB69B592235A49CA008AB703 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EB69B595235A4A1C008AB703 /* Disk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disk.swift; sourceTree = "<group>"; };
 		EB69B598235A5A51008AB703 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		EB6DD74E235CBE780009B5DF /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
+		EB6DD74E235CBE780009B5DF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		EB6DD750235CCC670009B5DF /* AVPlayerItem+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerItem+Rx.swift"; sourceTree = "<group>"; };
 		EB860C75235A460000733FE5 /* Chillinator 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chillinator 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB860C78235A460000733FE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		EB4705E524A7EDF700EA96DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EB6DD74E235CBE780009B5DF /* MusicList.swift */,
+				EB6DD74E235CBE780009B5DF /* Player.swift */,
 				EBC7A0B223661E4E007F5674 /* Music.swift */,
 			);
 			path = Models;
@@ -332,7 +332,7 @@
 				EBC7A0B323661E4E007F5674 /* Music.swift in Sources */,
 				EB860C79235A460000733FE5 /* AppDelegate.swift in Sources */,
 				EBC7A0B523661E84007F5674 /* MusicListAPIRequest.swift in Sources */,
-				EB6DD74F235CBE780009B5DF /* MusicList.swift in Sources */,
+				EB6DD74F235CBE780009B5DF /* Player.swift in Sources */,
 				EB69B599235A5A51008AB703 /* UIView.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
 				EB38089F24A79DC100AAECF0 /* Array.swift in Sources */,

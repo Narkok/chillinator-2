@@ -107,10 +107,11 @@ import Kingfisher
     
     /// Установка позиции головки проигрывателя
     func setPlayHeadPosition(relativeTime: Double) {
-        let angle = -CGFloat(relativeTime) * CGFloat.pi / 12
-        UIView.animate(withDuration: 1) { [weak self] in
+        let angle = -CGFloat(pow(relativeTime, 0.7)) * CGFloat.pi / 12
+        let options: UIView.AnimationOptions = relativeTime.isZero ? .curveEaseInOut : .curveLinear
+        UIView.animate(withDuration: 1, delay: 0, options: options, animations: { [weak self] in
             self?.playHeadImageView.rotate(by: angle)
-        }
+        })
     }
     
 
@@ -136,14 +137,14 @@ import Kingfisher
     
     
     /// Остановка анимации вращения
-    private func stopRotatingAnimation(at object: CALayer) -> CGFloat {
+    private func stopRotatingAnimation(at layer: CALayer) -> CGFloat {
         /// Сохранение текущего угла поворота
-        let rotAngle = object.presentation()?.value(forKeyPath: "transform.rotation") as? CGFloat ?? 0
+        let currentAngle = layer.presentation()?.value(forKeyPath: "transform.rotation") as? CGFloat ?? 0
         /// Удаление анимации
-        object.removeAllAnimations()
+        layer.removeAllAnimations()
         /// Поворот на сохранённый угол
-        object.rotate(by: rotAngle)
-        return rotAngle
+        layer.rotate(by: currentAngle)
+        return currentAngle
     }
     
     

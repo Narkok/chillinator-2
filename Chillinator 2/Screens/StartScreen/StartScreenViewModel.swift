@@ -18,7 +18,7 @@ class StartScreenViewModel {
         /// Конец загрузки
         let didFinishLoading: Driver<Void>
         /// Загруженный список песен
-        let musicList: Driver<MusicList>
+        let musicList: Driver<Player>
     }
     
     
@@ -27,7 +27,7 @@ class StartScreenViewModel {
         /// Cписок песен
         let musicList = provider.list()
             .map { $0.element ?? [] }
-            .map { MusicList(from: $0) }
+            .map { Player(with: $0) }
             .share()
             .asDriver()
         
