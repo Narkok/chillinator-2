@@ -14,12 +14,15 @@ import AVFoundation
 
 class PlayerViewController: UIViewController {
     
-    @IBOutlet weak var disk: Disk!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    
+    @IBOutlet weak var disk: Disk!
+    @IBOutlet weak var diskLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var diskTopConstraint: NSLayoutConstraint!
     
     var viewModel: PlayerViewModel?
     
@@ -55,6 +58,15 @@ class PlayerViewController: UIViewController {
     private func setupPlayer() {
         /// Инициализация плеера
         view.layer.addSublayer(AVPlayerLayer(player: player))
+    }
+    
+    
+    private func openList(withPlayer player: Player) {
+        let mlController = MusicListViewController()
+//        mlController.modalPresentationStyle = .overFullScreen
+//        mlController.modalTransitionStyle = .crossDissolve
+        mlController.viewModel = MusicListViewModel(data: player)
+        self.present(mlController, animated: true, completion: nil)
     }
     
     
@@ -149,15 +161,17 @@ class PlayerViewController: UIViewController {
             .drive(disk.rx.isPlaying)
             .disposed(by: disposeBag)
         
+        
+        /// Уменьшить диск при открытии списка
+//        viewModel.output.openList
+//            .map { _ in 0.65 }
+//            .drive(disk.rx.scale)
+//            .disposed(by: disposeBag)
+        
 
         /// Открыть контроллер со списком композиций
         viewModel.output.openList
-            .drive(onNext:{ [weak self] musicList in
-                let mlController = MusicListViewController()
-                mlController.modalPresentationStyle = .formSheet
-                mlController.viewModel = MusicListViewModel(data: musicList)
-                self?.present(mlController, animated: true, completion: nil)
-            })
+            .drive(onNext:{ [weak self] player in self?.openList(withPlayer: player) })
             .disposed(by: disposeBag)
     }
 }

@@ -55,6 +55,7 @@ class PlayerViewModel {
             .share(replay: 1)
             .asDriver()
         
+        /// Открыть список композиций
         let openList = input.showList
             .withLatestFrom(player)
             .share(replay: 1)

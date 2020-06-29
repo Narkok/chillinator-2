@@ -93,10 +93,10 @@ import Kingfisher
         /// Затемнить обложку
         coverImageView.fadeOut(withDuration: duration)
         Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { [weak self] _ in
-            self?.coverImageView.image = nil
             guard let url = URL(string: url) else { return }
             
             /// Загрузить новую обложку
+            self?.coverImageView.image = nil
             self?.coverImageView.kf.setImage(with: url) { [weak self] _ in
                 /// Показать новую обложку
                 self?.coverImageView.fadeIn(withDuration: duration)
@@ -112,6 +112,14 @@ import Kingfisher
         UIView.animate(withDuration: 1, delay: 0, options: options, animations: { [weak self] in
             self?.playHeadImageView.rotate(by: angle)
         })
+    }
+    
+    
+    /// Изменение размера диска
+    func set(scale: CGFloat, withDuration duration: TimeInterval = 0.5) {
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }
     }
     
 

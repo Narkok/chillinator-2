@@ -14,6 +14,5 @@ class MusicListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 }

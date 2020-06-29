@@ -28,6 +28,14 @@ extension Reactive where Base: Disk {
     }
     
     
+    /// Обложка диска
+    var scale: Binder<CGFloat> {
+        return Binder(self.base) { disk, scale in
+            disk.set(scale: scale)
+        }
+    }
+    
+    
     var isPlaying: Binder<Bool> {
         return Binder(self.base) { disk, isPlaying in
             disk.set(state: isPlaying ? .start : .stop )

@@ -12,6 +12,8 @@
             <connections>
                 <outlet property="artistLabel" destination="lPS-c7-elQ" id="7WW-Cw-dVo"/>
                 <outlet property="disk" destination="lct-Ov-0k7" id="zY7-kN-myD"/>
+                <outlet property="diskLeftConstraint" destination="NmB-g1-p6X" id="hia-N4-bp8"/>
+                <outlet property="diskTopConstraint" destination="kH3-MH-ohc" id="v5R-le-SLF"/>
                 <outlet property="listButton" destination="U1L-zp-zUQ" id="oxd-hc-0VD"/>
                 <outlet property="nextButton" destination="S2k-o3-r1o" id="ZvK-iJ-H3y"/>
                 <outlet property="playButton" destination="2az-v4-nLr" id="gHZ-V2-h2b"/>
@@ -87,7 +89,7 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lct-Ov-0k7" customClass="Disk" customModule="Chillinator_2" customModuleProvider="target">
-                    <rect key="frame" x="114" y="240" width="175" height="175"/>
+                    <rect key="frame" x="110" y="240" width="175" height="175"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="Dxz-3f-lql"/>
@@ -169,7 +171,7 @@
                 <constraint firstItem="lPS-c7-elQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7M7-Wm-kQY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sLH-st-BbK" secondAttribute="bottom" constant="30" id="GRf-fg-Mlu"/>
                 <constraint firstItem="07g-v1-D0a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="I2Y-Fx-lku"/>
-                <constraint firstItem="lct-Ov-0k7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="114" id="NmB-g1-p6X"/>
+                <constraint firstItem="lct-Ov-0k7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="110" id="NmB-g1-p6X"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lPS-c7-elQ" secondAttribute="trailing" constant="20" id="eqX-be-kAc"/>
                 <constraint firstItem="sLH-st-BbK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jii-EB-AVT"/>
                 <constraint firstItem="lct-Ov-0k7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="196" id="kH3-MH-ohc"/>
