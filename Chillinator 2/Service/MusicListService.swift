@@ -19,6 +19,7 @@ struct MusicListService: MusicListProvider {
     /// Получить список песен
     func list() -> Observable<Event<[Music]>> {
         let resultList = PublishRelay<Event<[Music]>>()
+        URLCache().removeAllCachedResponses()
         MusicListService.provider.request(.musicList, completion: { result in
             switch result {
             case .success(let response):
@@ -26,16 +27,11 @@ struct MusicListService: MusicListProvider {
                     let data = try JSONDecoder().decode([Music].self, from: response.data)
                     resultList.accept(.next(data))
                 }
-                catch { resultList.accept(.error(ServiceError(message: error.localizedDescription))) }
-            case .failure: resultList.accept(.error(ServiceError(message: "Ошибка при запросе данных")))
+                catch { resultList.accept(.error(ServiceError.decodingError)) }
+            case .failure: resultList.accept(.error(ServiceError.requestError))
             }
         })
         return resultList.asObservable()
-    }
-    
-    
-    struct ServiceError: Error {
-        let message: String
     }
 }
 
