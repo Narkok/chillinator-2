@@ -26,6 +26,9 @@ class PlayerViewController: UIViewController {
     
     var viewModel: PlayerViewModel?
     
+    private var initialTopConstraint  = CGFloat()
+    private var initialLeftConstraint = CGFloat()
+    
     private var playerItem: AVPlayerItem?
     private let player = AVPlayer()
     
@@ -51,6 +54,9 @@ class PlayerViewController: UIViewController {
         view.alpha = 0
         view.fadeIn()
         view.sendSubviewToBack(disk)
+        
+        initialTopConstraint  = diskTopConstraint.constant
+        initialLeftConstraint = diskLeftConstraint.constant
     }
     
     
@@ -58,15 +64,6 @@ class PlayerViewController: UIViewController {
     private func setupPlayer() {
         /// Инициализация плеера
         view.layer.addSublayer(AVPlayerLayer(player: player))
-    }
-    
-    
-    private func openList(withPlayer player: Player) {
-        let mlController = MusicListViewController()
-//        mlController.modalPresentationStyle = .overFullScreen
-//        mlController.modalTransitionStyle = .crossDissolve
-        mlController.viewModel = MusicListViewModel(data: player)
-        self.present(mlController, animated: true, completion: nil)
     }
     
     
@@ -161,17 +158,46 @@ class PlayerViewController: UIViewController {
             .drive(disk.rx.isPlaying)
             .disposed(by: disposeBag)
         
-        
-        /// Уменьшить диск при открытии списка
-//        viewModel.output.openList
-//            .map { _ in 0.65 }
-//            .drive(disk.rx.scale)
-//            .disposed(by: disposeBag)
-        
 
         /// Открыть контроллер со списком композиций
         viewModel.output.openList
-            .drive(onNext:{ [weak self] player in self?.openList(withPlayer: player) })
+            .drive(onNext:{ [weak self] player in self?.openList(with: player) })
             .disposed(by: disposeBag)
+    }
+    
+    
+    /// Открыть контроллер списка композиций
+    private func openList(with player: Player) {
+        let mlController = MusicListViewController()
+        mlController.modalPresentationStyle = .overFullScreen
+        mlController.modalTransitionStyle = .coverVertical
+        mlController.viewModel = MusicListViewModel(data: player)
+        present(mlController, animated: true)
+        
+        let duration = 0.5
+        let scale: CGFloat = 0.6
+        
+        /// Уменьшить диск при открытии списка
+        disk.set(scale: scale, withDuration: duration)
+        /// Переместить диск в центр и повыше
+        UIView.animate(withDuration: duration) { [weak self]  in
+            guard let self = self else { return }
+            let diskSize = self.disk.bounds.width / 2
+            self.diskTopConstraint.constant  = 140 - diskSize * (1 - scale)
+            self.diskLeftConstraint.constant = self.view.bounds.width / 2 - diskSize * (1 - scale)
+            self.view.layoutIfNeeded()
+        }
+        
+        mlController.rx.viewWillDisappear.asDriver().drive(onNext:{ [weak self]  in
+            /// Вернуть размер диска
+            self?.disk.set(scale: 1, withDuration: duration)
+            /// Вернуть диск в начальное положение
+            UIView.animate(withDuration: duration) { [weak self]  in
+                guard let self = self else { return }
+                self.diskTopConstraint.constant  = self.initialTopConstraint
+                self.diskLeftConstraint.constant = self.initialLeftConstraint
+                self.view.layoutIfNeeded()
+            }
+        }).disposed(by: disposeBag)
     }
 }
