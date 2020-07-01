@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicListViewController" customModule="Chillinator_2" customModuleProvider="target">
             <connections>
+                <outlet property="heightConstraint" destination="jUO-wL-UIc" id="ZWc-p2-ILJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,7 +23,8 @@
                     <rect key="frame" x="0.0" y="346" width="414" height="550"/>
                     <color key="backgroundColor" white="0.079061429794520549" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="550" id="jUO-wL-UIc"/>
+                        <constraint firstAttribute="height" constant="550" placeholder="YES" id="Z9O-Vf-edR"/>
+                        <constraint firstAttribute="height" priority="999" id="jUO-wL-UIc"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

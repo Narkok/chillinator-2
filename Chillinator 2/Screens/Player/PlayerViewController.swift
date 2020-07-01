@@ -172,7 +172,7 @@ class PlayerViewController: UIViewController {
         mlController.modalPresentationStyle = .overFullScreen
         mlController.modalTransitionStyle = .coverVertical
         mlController.viewModel = MusicListViewModel(data: player)
-        present(mlController, animated: true)
+        present(mlController, animated: false)
         
         let duration = 0.5
         let scale: CGFloat = 0.6
