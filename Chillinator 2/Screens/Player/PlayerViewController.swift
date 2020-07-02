@@ -76,25 +76,21 @@ class PlayerViewController: UIViewController {
             .bind(to: viewModel.input.change)
             .disposed(by: disposeBag)
         
-        
         /// Остановка / проигрывание композиции
         playButton.rx.tap.map { .changeState }
             .bind(to: viewModel.input.change)
             .disposed(by: disposeBag)
-        
         
         /// Кнопка списка композиций
         listButton.rx.tap
             .bind(to: viewModel.input.showList)
             .disposed(by: disposeBag)
         
-        
         /// Изменение положения головки проигрывателя
         player.rx.relativeTimer
             .distinctUntilChanged()
             .bind(to: disk.rx.playHeadPosition)
             .disposed(by: disposeBag)
-        
         
         /// Запуск следующей композиции по окончанию текущей
         player.rx.currentItem
@@ -105,13 +101,11 @@ class PlayerViewController: UIViewController {
             .bind(to: viewModel.input.change)
             .disposed(by: disposeBag)
         
-        
         /// Установка обложки
         viewModel.output.music
             .map { $0.coverURL ?? "" }
             .drive(disk.rx.coverImage)
             .disposed(by: disposeBag)
-        
         
         /// Установка заголовка
         viewModel.output.music
@@ -120,14 +114,12 @@ class PlayerViewController: UIViewController {
             .drive(titleLabel.rx.smoothChangeText)
             .disposed(by: disposeBag)
         
-        
         /// Установка исполнителя
         viewModel.output.music
             .map { $0.artist }
             .delay(.milliseconds(400))
             .drive(artistLabel.rx.smoothChangeText)
             .disposed(by: disposeBag)
-        
         
         /// Установка новой песни в плеер
         viewModel.output.music
@@ -137,12 +129,10 @@ class PlayerViewController: UIViewController {
             .drive(player.rx.playerItem)
             .disposed(by: disposeBag)
         
-        
         /// Запуск / остановка плеера
         viewModel.output.isPlaying
             .drive(player.rx.play)
             .disposed(by: disposeBag)
-        
         
         /// Сменить картинку на кнопке
         viewModel.output.isPlaying
@@ -151,14 +141,12 @@ class PlayerViewController: UIViewController {
             .drive(playButton.rx.image())
             .disposed(by: disposeBag)
         
-        
         /// Запуск / остановка диска
         viewModel.output.isPlaying
             .distinctUntilChanged()
             .drive(disk.rx.isPlaying)
             .disposed(by: disposeBag)
         
-
         /// Открыть контроллер со списком композиций
         viewModel.output.openList
             .drive(onNext:{ [weak self] player in self?.openList(with: player) })

@@ -13,7 +13,7 @@ import RxCocoa
 extension Reactive where Base: Disk {
     
     /// Позиция головки проигрывателя
-    var playHeadPosition: Binder<Double> {
+    var playHeadPosition: Binder<Float> {
         return Binder(self.base) { disk, time in
             disk.setPlayHeadPosition(relativeTime: time)
         }

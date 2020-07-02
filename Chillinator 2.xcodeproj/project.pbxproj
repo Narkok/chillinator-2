@@ -34,6 +34,7 @@
 		EBB2ABA1235C6A3800F4A432 /* StartScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB2AB9F235C6A3800F4A432 /* StartScreenViewController.xib */; };
 		EBC7A0B323661E4E007F5674 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC7A0B223661E4E007F5674 /* Music.swift */; };
 		EBC7A0B523661E84007F5674 /* MusicListAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC7A0B423661E84007F5674 /* MusicListAPIRequest.swift */; };
+		EBEB843724AE71D7007FF789 /* UISlider+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEB843624AE71D7007FF789 /* UISlider+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		EBB2AB9F235C6A3800F4A432 /* StartScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartScreenViewController.xib; sourceTree = "<group>"; };
 		EBC7A0B223661E4E007F5674 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		EBC7A0B423661E84007F5674 /* MusicListAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListAPIRequest.swift; sourceTree = "<group>"; };
+		EBEB843624AE71D7007FF789 /* UISlider+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISlider+Rx.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */,
 				EB464E7D24A3D73100B485E6 /* Observable.swift */,
 				EB38089C24A758BF00AAECF0 /* UILabel+Rx.swift */,
+				EBEB843624AE71D7007FF789 /* UISlider+Rx.swift */,
 				EB38089E24A79DC100AAECF0 /* Array.swift */,
 				EB0827AF24AA958C003D170C /* UIViewController+Rx.swift */,
 			);
@@ -342,6 +345,7 @@
 				EB6DD74F235CBE780009B5DF /* Player.swift in Sources */,
 				EB69B599235A5A51008AB703 /* UIView.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
+				EBEB843724AE71D7007FF789 /* UISlider+Rx.swift in Sources */,
 				EB38089F24A79DC100AAECF0 /* Array.swift in Sources */,
 				EBB2AB9D235C6A2500F4A432 /* StartScreenViewModel.swift in Sources */,
 				EB22949D2365B521007A3D43 /* AVPlayer+Rx.swift in Sources */,

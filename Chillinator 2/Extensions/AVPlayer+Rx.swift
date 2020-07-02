@@ -14,10 +14,10 @@ import RxCocoa
 extension Reactive where Base: AVPlayer {
     
     /// Отношение прошедшего времени композиции ко всей длине, от 0 до 1
-    public var relativeTimer: Observable<Double> {
+    public var relativeTimer: Observable<Float> {
         return Observable.create { observer in
             let timer = self.base.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: nil) { time in
-                if let currentItem = self.base.currentItem { observer.onNext(Double(CMTimeGetSeconds(time) / CMTimeGetSeconds(currentItem.asset.duration))) }
+                if let currentItem = self.base.currentItem { observer.onNext(Float(CMTimeGetSeconds(time) / CMTimeGetSeconds(currentItem.asset.duration))) }
                 else { observer.onNext(0) }
             }
             return Disposables.create { self.base.removeTimeObserver(timer) }
