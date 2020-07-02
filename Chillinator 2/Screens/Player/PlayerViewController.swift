@@ -177,6 +177,28 @@ class PlayerViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
+        guard let viewModel = viewModel else { return }
+        
+        self.player.rx.relativeTimer
+            .distinctUntilChanged()
+            .bind(to: mlViewModel.input.parent.relativeTimer)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.music.asObservable().share(replay: 1)
+            .distinctUntilChanged()
+            .bind(to: mlViewModel.input.parent.music)
+            .disposed(by: disposeBag)
+        
+        viewModel.output.isPlaying.asObservable()
+            .distinctUntilChanged()
+            .bind(to: mlViewModel.input.parent.isPlaying)
+            .disposed(by: disposeBag)
+        
+        mlViewModel.output.parent.change
+            .bind(to: viewModel.input.change)
+            .disposed(by: disposeBag)
+        
+        /// Отслеживание закрытия списка
         mlViewModel.output.parent.willClose.drive(onNext:{ [weak self]  in
             /// Вернуть размер диска
             self?.disk.set(scale: 1, withDuration: duration)

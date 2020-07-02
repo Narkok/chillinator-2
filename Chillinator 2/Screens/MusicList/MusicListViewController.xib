@@ -10,7 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MusicListViewController" customModule="Chillinator_2" customModuleProvider="target">
             <connections>
+                <outlet property="artistLabel" destination="yh9-hm-gLR" id="Cxv-vz-0uB"/>
                 <outlet property="heightConstraint" destination="jUO-wL-UIc" id="ZWc-p2-ILJ"/>
+                <outlet property="playButton" destination="56S-jR-HB6" id="kZm-QG-3vk"/>
+                <outlet property="slider" destination="6Mr-q1-628" id="23O-0q-rtn"/>
+                <outlet property="tableView" destination="AVB-Kc-pec" id="EOz-U2-oUL"/>
+                <outlet property="titleLabel" destination="zev-HQ-uzO" id="hi5-YZ-KfH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,14 +26,76 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15q-5m-una">
                     <rect key="frame" x="0.0" y="346" width="414" height="550"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wza-Re-QC7">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                            <subviews>
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-q1-628">
+                                    <rect key="frame" x="-3" y="83" width="420" height="4"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="3" id="EVz-bg-iWS"/>
+                                    </constraints>
+                                    <color key="minimumTrackTintColor" red="0.76470588235294112" green="0.0" blue="0.062745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="maximumTrackTintColor" white="1" alpha="0.045804794520547948" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </slider>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56S-jR-HB6">
+                                    <rect key="frame" x="342" y="17" width="52" height="52"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="52" id="PAW-Xd-Rjp"/>
+                                        <constraint firstAttribute="height" constant="52" id="kVC-Bd-LYC"/>
+                                    </constraints>
+                                    <state key="normal" image="playButton"/>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zev-HQ-uzO" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                    <rect key="frame" x="20" y="16" width="314" height="26"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh9-hm-gLR" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                    <rect key="frame" x="20" y="50" width="314" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="56S-jR-HB6" firstAttribute="leading" secondItem="zev-HQ-uzO" secondAttribute="trailing" constant="8" id="05H-J3-qfH"/>
+                                <constraint firstItem="yh9-hm-gLR" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" constant="20" id="3rJ-On-Cg3"/>
+                                <constraint firstItem="zev-HQ-uzO" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" constant="20" id="5RH-WA-6BC"/>
+                                <constraint firstAttribute="trailing" secondItem="6Mr-q1-628" secondAttribute="trailing" constant="-1" id="8sg-SN-veA"/>
+                                <constraint firstItem="56S-jR-HB6" firstAttribute="leading" secondItem="yh9-hm-gLR" secondAttribute="trailing" constant="8" id="BhQ-CW-BGy"/>
+                                <constraint firstAttribute="bottom" secondItem="6Mr-q1-628" secondAttribute="bottom" id="H3B-zO-Jke"/>
+                                <constraint firstItem="yh9-hm-gLR" firstAttribute="top" secondItem="zev-HQ-uzO" secondAttribute="bottom" constant="8" id="Wmk-gz-xfb"/>
+                                <constraint firstItem="6Mr-q1-628" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" constant="-1" id="dIb-fO-dza"/>
+                                <constraint firstAttribute="trailing" secondItem="56S-jR-HB6" secondAttribute="trailing" constant="20" id="gdD-W8-RKl"/>
+                                <constraint firstItem="56S-jR-HB6" firstAttribute="centerY" secondItem="wza-Re-QC7" secondAttribute="centerY" id="q0S-4w-6XY"/>
+                                <constraint firstAttribute="height" constant="86" id="qtK-PT-XPu"/>
+                                <constraint firstItem="zev-HQ-uzO" firstAttribute="top" secondItem="wza-Re-QC7" secondAttribute="top" constant="16" id="sH0-pY-aU4"/>
+                            </constraints>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AVB-Kc-pec">
+                            <rect key="frame" x="0.0" y="86" width="414" height="464"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="0.079061429794520549" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="wza-Re-QC7" secondAttribute="trailing" id="2LA-5F-9Za"/>
+                        <constraint firstItem="AVB-Kc-pec" firstAttribute="top" secondItem="wza-Re-QC7" secondAttribute="bottom" id="R5x-fO-gX4"/>
                         <constraint firstAttribute="height" constant="550" placeholder="YES" id="Z9O-Vf-edR"/>
+                        <constraint firstAttribute="bottom" secondItem="AVB-Kc-pec" secondAttribute="bottom" id="g6d-tL-1ng"/>
+                        <constraint firstItem="AVB-Kc-pec" firstAttribute="leading" secondItem="15q-5m-una" secondAttribute="leading" id="hl6-MY-3XT"/>
+                        <constraint firstAttribute="trailing" secondItem="AVB-Kc-pec" secondAttribute="trailing" id="j3u-NP-uTk"/>
                         <constraint firstAttribute="height" priority="999" id="jUO-wL-UIc"/>
+                        <constraint firstItem="wza-Re-QC7" firstAttribute="top" secondItem="15q-5m-una" secondAttribute="top" id="uSp-5L-GxE"/>
+                        <constraint firstItem="wza-Re-QC7" firstAttribute="leading" secondItem="15q-5m-una" secondAttribute="leading" id="wTI-rS-tZ7"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="15"/>
+                            <integer key="value" value="22"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -49,4 +116,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
+    <resources>
+        <image name="playButton" width="96" height="96"/>
+    </resources>
 </document>

@@ -21,10 +21,13 @@ class MusicListViewModel {
         
         struct View {
             let willClose = PublishRelay<Void>()
+            let change = PublishRelay<Player.Change>()
         }
         
         struct Parent {
             let isPlaying = PublishRelay<Bool>()
+            let music = PublishRelay<Music>()
+            let relativeTimer = PublishRelay<Float>()
         }
     }
     
@@ -33,20 +36,26 @@ class MusicListViewModel {
         let parent: Parent
         
         struct View {
-            
+            let music: Driver<Music>
+            let isPlaying: Driver<Bool>
+            let relativeTimer: Driver<Float>
         }
         
         struct Parent {
             let willClose: Driver<Void>
+            let change: Observable<Player.Change>
         }
     }
     
     
     init(data: Player) {
         
-        let outputView = Output.View()
+        let outputView = Output.View(music: input.parent.music.share(replay: 1).asDriver(),
+                                     isPlaying: input.parent.isPlaying.share(replay: 1).asDriver(),
+                                     relativeTimer: input.parent.relativeTimer.share(replay: 1).asDriver())
         
-        let outputParent = Output.Parent(willClose: input.view.willClose.asDriver())
+        let outputParent = Output.Parent(willClose: input.view.willClose.asDriver(),
+                                         change: input.view.change.asObservable())
         
         output = Output(view: outputView,
                         parent: outputParent)
