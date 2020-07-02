@@ -10,6 +10,14 @@ import RxCocoa
 import RxSwift
 
 
+public extension PublishRelay {
+    
+    func asDriver() -> Driver<Element> {
+        return asDriver(onErrorDriveWith: Driver.empty())
+    }
+}
+
+
 public extension Observable {
 
     func asDriver() -> Driver<Element> {

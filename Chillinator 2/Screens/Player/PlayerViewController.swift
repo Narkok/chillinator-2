@@ -171,7 +171,8 @@ class PlayerViewController: UIViewController {
         let mlController = MusicListViewController()
         mlController.modalPresentationStyle = .overFullScreen
         mlController.modalTransitionStyle = .coverVertical
-        mlController.viewModel = MusicListViewModel(data: player)
+        let mlViewModel = MusicListViewModel(data: player)
+        mlController.viewModel = mlViewModel
         present(mlController, animated: false)
         
         let duration = 0.5
@@ -188,7 +189,7 @@ class PlayerViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-        mlController.rx.viewWillDisappear.asDriver().drive(onNext:{ [weak self]  in
+        mlViewModel.output.parent.willClose.drive(onNext:{ [weak self]  in
             /// Вернуть размер диска
             self?.disk.set(scale: 1, withDuration: duration)
             /// Вернуть диск в начальное положение
