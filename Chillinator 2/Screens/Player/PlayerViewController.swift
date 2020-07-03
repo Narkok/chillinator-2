@@ -181,16 +181,19 @@ class PlayerViewController: UIViewController {
         
         self.player.rx.relativeTimer
             .distinctUntilChanged()
+            .delay(.milliseconds(50))
             .bind(to: mlViewModel.input.parent.relativeTimer)
             .disposed(by: disposeBag)
         
         viewModel.output.music.asObservable().share(replay: 1)
             .distinctUntilChanged()
+            .delay(.milliseconds(50))
             .bind(to: mlViewModel.input.parent.music)
             .disposed(by: disposeBag)
         
         viewModel.output.isPlaying.asObservable()
             .distinctUntilChanged()
+            .delay(.milliseconds(50))
             .bind(to: mlViewModel.input.parent.isPlaying)
             .disposed(by: disposeBag)
         

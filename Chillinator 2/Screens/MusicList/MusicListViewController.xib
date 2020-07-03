@@ -27,11 +27,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15q-5m-una">
                     <rect key="frame" x="0.0" y="346" width="414" height="550"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wza-Re-QC7">
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wza-Re-QC7">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                             <subviews>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-q1-628">
-                                    <rect key="frame" x="-3" y="83" width="420" height="4"/>
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-q1-628">
+                                    <rect key="frame" x="-2" y="83" width="418" height="4"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="3" id="EVz-bg-iWS"/>
                                     </constraints>
@@ -65,14 +65,14 @@
                                 <constraint firstItem="56S-jR-HB6" firstAttribute="leading" secondItem="zev-HQ-uzO" secondAttribute="trailing" constant="8" id="05H-J3-qfH"/>
                                 <constraint firstItem="yh9-hm-gLR" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" constant="20" id="3rJ-On-Cg3"/>
                                 <constraint firstItem="zev-HQ-uzO" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" constant="20" id="5RH-WA-6BC"/>
-                                <constraint firstAttribute="trailing" secondItem="6Mr-q1-628" secondAttribute="trailing" constant="-1" id="8sg-SN-veA"/>
+                                <constraint firstAttribute="trailing" secondItem="6Mr-q1-628" secondAttribute="trailing" id="8sg-SN-veA"/>
                                 <constraint firstItem="56S-jR-HB6" firstAttribute="leading" secondItem="yh9-hm-gLR" secondAttribute="trailing" constant="8" id="BhQ-CW-BGy"/>
                                 <constraint firstAttribute="bottom" secondItem="6Mr-q1-628" secondAttribute="bottom" id="H3B-zO-Jke"/>
                                 <constraint firstItem="yh9-hm-gLR" firstAttribute="top" secondItem="zev-HQ-uzO" secondAttribute="bottom" constant="8" id="Wmk-gz-xfb"/>
-                                <constraint firstItem="6Mr-q1-628" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" constant="-1" id="dIb-fO-dza"/>
+                                <constraint firstItem="6Mr-q1-628" firstAttribute="leading" secondItem="wza-Re-QC7" secondAttribute="leading" id="dIb-fO-dza"/>
                                 <constraint firstAttribute="trailing" secondItem="56S-jR-HB6" secondAttribute="trailing" constant="20" id="gdD-W8-RKl"/>
                                 <constraint firstItem="56S-jR-HB6" firstAttribute="centerY" secondItem="wza-Re-QC7" secondAttribute="centerY" id="q0S-4w-6XY"/>
-                                <constraint firstAttribute="height" constant="86" id="qtK-PT-XPu"/>
+                                <constraint firstAttribute="height" priority="999" constant="86" id="qtK-PT-XPu"/>
                                 <constraint firstItem="zev-HQ-uzO" firstAttribute="top" secondItem="wza-Re-QC7" secondAttribute="top" constant="16" id="sH0-pY-aU4"/>
                             </constraints>
                         </view>
@@ -85,11 +85,10 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="wza-Re-QC7" secondAttribute="trailing" id="2LA-5F-9Za"/>
                         <constraint firstItem="AVB-Kc-pec" firstAttribute="top" secondItem="wza-Re-QC7" secondAttribute="bottom" id="R5x-fO-gX4"/>
-                        <constraint firstAttribute="height" constant="550" placeholder="YES" id="Z9O-Vf-edR"/>
                         <constraint firstAttribute="bottom" secondItem="AVB-Kc-pec" secondAttribute="bottom" id="g6d-tL-1ng"/>
                         <constraint firstItem="AVB-Kc-pec" firstAttribute="leading" secondItem="15q-5m-una" secondAttribute="leading" id="hl6-MY-3XT"/>
                         <constraint firstAttribute="trailing" secondItem="AVB-Kc-pec" secondAttribute="trailing" id="j3u-NP-uTk"/>
-                        <constraint firstAttribute="height" priority="999" id="jUO-wL-UIc"/>
+                        <constraint firstAttribute="height" constant="550" id="jUO-wL-UIc"/>
                         <constraint firstItem="wza-Re-QC7" firstAttribute="top" secondItem="15q-5m-una" secondAttribute="top" id="uSp-5L-GxE"/>
                         <constraint firstItem="wza-Re-QC7" firstAttribute="leading" secondItem="15q-5m-una" secondAttribute="leading" id="wTI-rS-tZ7"/>
                     </constraints>

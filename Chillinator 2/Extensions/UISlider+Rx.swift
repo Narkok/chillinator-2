@@ -15,7 +15,7 @@ extension Reactive where Base: UISlider {
     /// Установка значения
     var value: Binder<Float> {
         return Binder(self.base) { slider, value in
-            slider.value = value
+            slider.setValue(value, animated: !value.isZero)
         }
     }
 }

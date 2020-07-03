@@ -29,6 +29,7 @@ class MusicListViewController: UIViewController {
         
         /// Убрать бегунок со слайдера
         slider.setThumbImage(UIImage(), for: .normal)
+        slider.setValue(0, animated: false)
         
         /// Настройка подписок
         setupSubscriptions()
@@ -68,14 +69,13 @@ class MusicListViewController: UIViewController {
         /// Установка заголовка
         viewModel.output.view.music
             .map { $0.title }
-            .delay(.milliseconds(200))
             .drive(titleLabel.rx.smoothChangeText)
             .disposed(by: disposeBag)
         
         /// Установка исполнителя
         viewModel.output.view.music
             .map { $0.artist }
-            .delay(.milliseconds(400))
+            .delay(.milliseconds(100))
             .drive(artistLabel.rx.smoothChangeText)
             .disposed(by: disposeBag)
         

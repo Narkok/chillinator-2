@@ -31,6 +31,10 @@ public extension Observable {
     func filterNil<T>() -> Observable<T> where Element == T? {
         return self.filter { $0 != nil }.map { $0! }
     }
+    
+    func delay(_ dueTime: RxTimeInterval) -> Observable<Element> {
+        return delay(dueTime, scheduler: MainScheduler.asyncInstance)
+    }
 }
 
 
