@@ -202,7 +202,7 @@ class PlayerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         /// Отслеживание закрытия списка
-        mlViewModel.output.parent.willClose.drive(onNext:{ [weak self]  in
+        mlViewModel.output.parent.willClose.drive(onNext:{ [weak self] in
             /// Вернуть размер диска
             self?.disk.set(scale: 1, withDuration: duration)
             /// Вернуть диск в начальное положение

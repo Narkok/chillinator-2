@@ -39,6 +39,7 @@ class MusicListViewModel {
             let music: Driver<Music>
             let isPlaying: Driver<Bool>
             let relativeTimer: Driver<Float>
+            let list: Driver<[Music]>
         }
         
         struct Parent {
@@ -52,7 +53,8 @@ class MusicListViewModel {
         
         let outputView = Output.View(music: input.parent.music.share(replay: 1).asDriver(),
                                      isPlaying: input.parent.isPlaying.share(replay: 1).asDriver(),
-                                     relativeTimer: input.parent.relativeTimer.share(replay: 1).asDriver())
+                                     relativeTimer: input.parent.relativeTimer.share(replay: 1).asDriver(),
+                                     list: Driver.just(data.list))
         
         let outputParent = Output.Parent(willClose: input.view.willClose.asDriver(),
                                          change: input.view.change.asObservable())

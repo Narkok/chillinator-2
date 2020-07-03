@@ -35,7 +35,7 @@ class PlayerViewModel {
         let player = input.change
             .scan(initialPlayer) { list, changeType in
                 var list = list
-                list.changeMusic(by: changeType)
+                list.change(by: changeType)
                 return list
             }
             .startWith(initialPlayer)

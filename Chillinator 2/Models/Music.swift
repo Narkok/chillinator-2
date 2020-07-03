@@ -20,12 +20,13 @@ struct Music: Codable, Equatable {
     
     /// URL обложки композиции
     let coverURL: String?
+    var getCoverURL: URL? {
+        return coverURL.map { URL(string: $0) } ?? nil
+    }
     
     /// URL композиции
     private let musicURL: String?
-
     var getMusicURL: URL? {
-        guard let musicURL = musicURL else { return nil }
-        return URL(string: musicURL)
+        return musicURL.map { URL(string: $0) } ?? nil
     }
 }

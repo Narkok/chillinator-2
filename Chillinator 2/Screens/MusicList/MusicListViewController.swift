@@ -29,7 +29,6 @@ class MusicListViewController: UIViewController {
         
         /// Убрать бегунок со слайдера
         slider.setThumbImage(UIImage(), for: .normal)
-        slider.setValue(0, animated: false)
         
         /// Настройка подписок
         setupSubscriptions()
@@ -53,11 +52,6 @@ class MusicListViewController: UIViewController {
     /// Настройка подписок
     private func setupSubscriptions() {
         guard let viewModel = viewModel else { return }
-        
-        /// Остановка / проигрывание композиции
-        playButton.rx.tap.map { .changeState }
-            .bind(to: viewModel.input.view.change)
-            .disposed(by: disposeBag)
         
         /// Сменить картинку на кнопке
         viewModel.output.view.isPlaying
@@ -83,13 +77,29 @@ class MusicListViewController: UIViewController {
         viewModel.output.view.relativeTimer
             .drive(slider.rx.value)
             .disposed(by: disposeBag)
+        
+        /// Загрузка списка в tableView
+        viewModel.output.view.list
+            .drive(tableView.rx.items) { tableView, _, music in tableView.cell(forClass: MusicCell.self) ~ { $0.set(music) } }
+            .disposed(by: disposeBag)
+        
+        /// Запуск выбранной из списка композиции
+        tableView.rx.modelSelected(Music.self)
+            .map { Player.Change.setMusic($0) }
+            .bind(to: viewModel.input.view.change)
+            .disposed(by: disposeBag)
+            
+        /// Остановка / проигрывание композиции
+        playButton.rx.tap.map { .changeState }
+            .bind(to: viewModel.input.view.change)
+            .disposed(by: disposeBag)
     }
     
     
     /// Открыть список композиций
     private func openList() {
         heightConstraint.constant = 550
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: { [weak self] in
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: { [weak self] in
             self?.view.layoutIfNeeded()
         })
     }
