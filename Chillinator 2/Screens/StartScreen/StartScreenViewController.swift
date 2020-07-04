@@ -31,7 +31,8 @@ class StartScreenViewController: UIViewController {
             .drive(onNext:{ [weak self] player in
                 let playerController = PlayerViewController()
                 playerController.modalPresentationStyle = .overFullScreen
-                playerController.viewModel = PlayerViewModel(with: player)
+                let playerViewModel = PlayerViewModel(with: player)
+                playerController.viewModel = playerViewModel
                 self?.present(playerController, animated: false)
             })
             .disposed(by: disposeBag)
