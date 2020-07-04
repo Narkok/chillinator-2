@@ -128,7 +128,7 @@ import Kingfisher
         switch state {
             
         /// Анимация вращения диска
-        case .start:
+        case .play:
             setRotatingAnimation(to: discImageLayer, duration: 20, startAngle: discRotAngle, direction: 1)
             setRotatingAnimation(to: shine1ImageLayer, duration: 50, startAngle: shine1RotAngle, direction: 1)
             setRotatingAnimation(to: shine2ImageLayer, duration: 60, startAngle: shine2RotAngle,  direction: -1)
@@ -171,6 +171,6 @@ import Kingfisher
     /// Состояние диска
     enum State {
         case stop
-        case start
+        case play
     }
 }

@@ -6,8 +6,10 @@
 //  Copyright © 2019 NRKK.DEV. All rights reserved.
 //
 
+import Foundation
 
-/// 
+
+/// Плеер
 struct Player {
     
     /// Список композиций
@@ -18,6 +20,7 @@ struct Player {
     
     /// Состояние
     var isPlaying: Bool
+    
     
     init(with data: [Music]) {
         list = data.shuffled()

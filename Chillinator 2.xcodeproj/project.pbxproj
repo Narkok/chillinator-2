@@ -16,6 +16,7 @@
 		EB22949D2365B521007A3D43 /* AVPlayer+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */; };
 		EB38089D24A758BF00AAECF0 /* UILabel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38089C24A758BF00AAECF0 /* UILabel+Rx.swift */; };
 		EB38089F24A79DC100AAECF0 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB38089E24A79DC100AAECF0 /* Array.swift */; };
+		EB3BD51424B0754700897C42 /* NotificationCenter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3BD51324B0754700897C42 /* NotificationCenter+Rx.swift */; };
 		EB464E7E24A3D73100B485E6 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB464E7D24A3D73100B485E6 /* Observable.swift */; };
 		EB49F7AA24AFC9B900FA7BFE /* MusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB49F7A824AFC9B900FA7BFE /* MusicCell.swift */; };
 		EB49F7AB24AFC9B900FA7BFE /* MusicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB49F7A924AFC9B900FA7BFE /* MusicCell.xib */; };
@@ -53,6 +54,7 @@
 		EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Rx.swift"; sourceTree = "<group>"; };
 		EB38089C24A758BF00AAECF0 /* UILabel+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Rx.swift"; sourceTree = "<group>"; };
 		EB38089E24A79DC100AAECF0 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		EB3BD51324B0754700897C42 /* NotificationCenter+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Rx.swift"; sourceTree = "<group>"; };
 		EB464E7D24A3D73100B485E6 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		EB49F7A824AFC9B900FA7BFE /* MusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCell.swift; sourceTree = "<group>"; };
 		EB49F7A924AFC9B900FA7BFE /* MusicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCell.xib; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				EB0827AF24AA958C003D170C /* UIViewController+Rx.swift */,
 				EB49F7AC24AFCD9A00FA7BFE /* TableView.swift */,
 				EB49F7AE24AFD51900FA7BFE /* ApplyOperator.swift */,
+				EB3BD51324B0754700897C42 /* NotificationCenter+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				EB0827B024AA958C003D170C /* UIViewController+Rx.swift in Sources */,
 				B8C3010B235FA30200EC6230 /* MusicListViewModel.swift in Sources */,
 				B8C3010E235FA32500EC6230 /* MusicListViewController.swift in Sources */,
+				EB3BD51424B0754700897C42 /* NotificationCenter+Rx.swift in Sources */,
 				EB464E7E24A3D73100B485E6 /* Observable.swift in Sources */,
 				EB49F7AF24AFD51900FA7BFE /* ApplyOperator.swift in Sources */,
 				EB57AB842365D38F00A2B61B /* Disk+Rx.swift in Sources */,

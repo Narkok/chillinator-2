@@ -38,7 +38,7 @@ extension Reactive where Base: Disk {
     
     var isPlaying: Binder<Bool> {
         return Binder(self.base) { disk, isPlaying in
-            disk.set(state: isPlaying ? .start : .stop )
+            disk.set(state: isPlaying ? .play : .stop )
         }
     }
 }
