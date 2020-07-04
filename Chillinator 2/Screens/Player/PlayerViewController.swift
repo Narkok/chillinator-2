@@ -151,6 +151,12 @@ class PlayerViewController: UIViewController {
         viewModel.output.openList
             .drive(onNext:{ [weak self] player in self?.openList(with: player) })
             .disposed(by: disposeBag)
+        
+        /// Восстановление состояния диска после переоткрытия приложения
+        NotificationCenter.default.rx.isActive
+            .withLatestFrom(viewModel.output.isPlaying.asObservable()) { $0 && $1 }
+            .bind(to: disk.rx.isPlaying)
+            .disposed(by: disposeBag)
     }
     
     
