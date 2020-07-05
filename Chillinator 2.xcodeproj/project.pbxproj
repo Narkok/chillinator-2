@@ -10,6 +10,7 @@
 		B8C3010B235FA30200EC6230 /* MusicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C3010A235FA30200EC6230 /* MusicListViewModel.swift */; };
 		B8C3010E235FA32500EC6230 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C3010C235FA32500EC6230 /* MusicListViewController.swift */; };
 		B8C3010F235FA32500EC6230 /* MusicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C3010D235FA32500EC6230 /* MusicListViewController.xib */; };
+		B8CCB67724B20758000B155E /* NowPlayingInfoCenter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB67624B20758000B155E /* NowPlayingInfoCenter+Rx.swift */; };
 		C4D9C9466D56876B9457DFFB /* Pods_Chillinator_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 282A009B59A74098116420DF /* Pods_Chillinator_2.framework */; };
 		EB0827B024AA958C003D170C /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0827AF24AA958C003D170C /* UIViewController+Rx.swift */; };
 		EB1F710624A8F7AA002B1CE0 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1F710524A8F7AA002B1CE0 /* ServiceError.swift */; };
@@ -49,6 +50,7 @@
 		B8C3010A235FA30200EC6230 /* MusicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewModel.swift; sourceTree = "<group>"; };
 		B8C3010C235FA32500EC6230 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
 		B8C3010D235FA32500EC6230 /* MusicListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListViewController.xib; sourceTree = "<group>"; };
+		B8CCB67624B20758000B155E /* NowPlayingInfoCenter+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NowPlayingInfoCenter+Rx.swift"; sourceTree = "<group>"; };
 		EB0827AF24AA958C003D170C /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		EB1F710524A8F7AA002B1CE0 /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		EB22949C2365B521007A3D43 /* AVPlayer+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Rx.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				EB49F7AC24AFCD9A00FA7BFE /* TableView.swift */,
 				EB49F7AE24AFD51900FA7BFE /* ApplyOperator.swift */,
 				EB3BD51324B0754700897C42 /* NotificationCenter+Rx.swift */,
+				B8CCB67624B20758000B155E /* NowPlayingInfoCenter+Rx.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				EB69B599235A5A51008AB703 /* UIView.swift in Sources */,
 				EB69B590235A4850008AB703 /* PlayerViewController.swift in Sources */,
 				EBEB843724AE71D7007FF789 /* UISlider+Rx.swift in Sources */,
+				B8CCB67724B20758000B155E /* NowPlayingInfoCenter+Rx.swift in Sources */,
 				EB38089F24A79DC100AAECF0 /* Array.swift in Sources */,
 				EB49F7AD24AFCD9A00FA7BFE /* TableView.swift in Sources */,
 				EBB2AB9D235C6A2500F4A432 /* StartScreenViewModel.swift in Sources */,

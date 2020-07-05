@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import AVFoundation
+import MediaPlayer
 
 
 class PlayerViewController: UIViewController {
@@ -64,12 +65,17 @@ class PlayerViewController: UIViewController {
     private func setupPlayer() {
         /// Инициализация плеера
         view.layer.addSublayer(AVPlayerLayer(player: player))
+        
+        /// Получать события с контроллера на заблокированном экране
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        becomeFirstResponder()
     }
     
     
     /// Настройка подписок
     private func setupSubscriptions() {
         guard let viewModel = viewModel else { return }
+        let nowPlayingInfoCenter = MPNowPlayingInfoCenter.default()
         
         /// Кнопка 'next'
         nextButton.rx.tap.map { .setNext }
@@ -156,6 +162,13 @@ class PlayerViewController: UIViewController {
         NotificationCenter.default.rx.isActive
             .withLatestFrom(viewModel.output.isPlaying.asObservable()) { $0 && $1 }
             .bind(to: disk.rx.isPlaying)
+            .disposed(by: disposeBag)
+        
+        /// Отображение информации о текущей композиции
+        player.rx.currentItem.filterNil()
+            .map { $0.asset.duration.seconds }
+            .withLatestFrom(viewModel.output.music) { (duration: $0, music: $1) }
+            .bind(to: nowPlayingInfoCenter.rx.info)
             .disposed(by: disposeBag)
     }
     
