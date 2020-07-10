@@ -50,6 +50,21 @@ class PlayerViewController: UIViewController {
     }
     
     
+    /// Управление с заблокированного экрана
+    override func remoteControlReceived(with event: UIEvent?) {
+        let change: Player.Change? = {
+            switch event?.subtype {
+                case .remoteControlPlay: return .changeState
+                case .remoteControlPause: return .changeState
+                case .remoteControlNextTrack: return .setNext
+                case .remoteControlPreviousTrack: return .setPrevious
+                default: return nil
+            }
+        }()
+        change.map { viewModel?.input.change.accept($0) }
+    }
+    
+    
     /// Настройка экрана
     private func setupView() {
         view.alpha = 0

@@ -16,10 +16,10 @@ struct Player {
     let list: [Music]
     
     /// Номер текущей композиции
-    private(set) var currentNum: Int
+    private var currentNum: Int
     
     /// Состояние
-    var isPlaying: Bool
+    private(set) var isPlaying: Bool
     
     
     init(with data: [Music]) {
@@ -39,9 +39,9 @@ struct Player {
     mutating func change(by changeType: Change) {
         switch changeType {
         case .setNext: currentNum = (currentNum + 1) % list.count
-        case .setNum(let num): currentNum = num < list.count ? num : 0
         case .changeState: isPlaying = !isPlaying
         case .setMusic(let music): currentNum = list.firstIndex(of: music) ?? 0
+        case .setPrevious: currentNum = (currentNum + list.count - 1) % list.count
         }
     }
     
@@ -50,11 +50,11 @@ struct Player {
     enum Change {
         /// Поставить следующую по списку
         case setNext
-        /// Поставить композицию под номером
-        case setNum(Int)
-        /// Изменить состояние (Play / Pause)
-        case changeState
+        /// Поставить предыдущую  по списку
+        case setPrevious
         /// Поставить композицию
         case setMusic(Music)
+        /// Изменить состояние (Play / Pause)
+        case changeState
     }
 }
