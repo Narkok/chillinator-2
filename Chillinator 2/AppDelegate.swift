@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = startScreenViewController
         window!.makeKeyAndVisible()
         
+        /// Очистка кеша
+        #if DEBUG
+        URLCache.shared.removeAllCachedResponses()
+        #endif
+        
         /// Продолжать играть в фоновом режиме
         UIApplication.shared.beginReceivingRemoteControlEvents()
         let audioSession = AVAudioSession.sharedInstance()

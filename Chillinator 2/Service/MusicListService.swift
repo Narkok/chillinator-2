@@ -19,7 +19,6 @@ struct MusicListService: MusicListProvider {
     /// Получить список песен
     func list() -> Observable<Event<[Music]>> {
         let resultList = PublishRelay<Event<[Music]>>()
-        URLCache().removeAllCachedResponses()
         MusicListService.provider.request(.musicList, completion: { result in
             switch result {
             case .success(let response):

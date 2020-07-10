@@ -165,9 +165,9 @@ class PlayerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         /// Отображение информации о текущей композиции
-        player.rx.currentItem.filterNil()
-            .map { $0.asset.duration.seconds }
-            .withLatestFrom(viewModel.output.music) { (duration: $0, music: $1) }
+        Observable.zip(player.rx.currentItem.filterNil(),
+                       viewModel.output.music.asObservable())
+            .map { (duration: $0.0.asset.duration.seconds, music: $0.1) }
             .bind(to: nowPlayingInfoCenter.rx.info)
             .disposed(by: disposeBag)
     }
