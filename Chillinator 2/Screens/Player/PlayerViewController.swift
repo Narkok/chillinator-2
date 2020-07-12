@@ -179,11 +179,14 @@ class PlayerViewController: UIViewController {
             .bind(to: disk.rx.isPlaying)
             .disposed(by: disposeBag)
         
+        player.rx.currentItem.filterNil()
+            .map { $0.asset.duration.seconds }
+            .bind(to: nowPlayingInfoCenter.rx.duration)
+            .disposed(by: disposeBag)
+        
         /// Отображение информации о текущей композиции
-        Observable.zip(player.rx.currentItem.filterNil(),
-                       viewModel.output.music.asObservable())
-            .map { (duration: $0.0.asset.duration.seconds, music: $0.1) }
-            .bind(to: nowPlayingInfoCenter.rx.info)
+        viewModel.output.music
+            .drive(nowPlayingInfoCenter.rx.music)
             .disposed(by: disposeBag)
     }
     
