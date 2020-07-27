@@ -18,19 +18,7 @@ struct MusicListService: MusicListProvider {
     
     /// Получить список песен
     func list() -> Observable<Event<[Music]>> {
-        let resultList = PublishRelay<Event<[Music]>>()
-        MusicListService.provider.request(.musicList, completion: { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let data = try JSONDecoder().decode([Music].self, from: response.data)
-                    resultList.accept(.next(data))
-                }
-                catch { resultList.accept(.error(ServiceError.decodingError)) }
-            case .failure: resultList.accept(.error(ServiceError.requestError))
-            }
-        })
-        return resultList.asObservable()
+        return MusicListService.provider.rx.request(.musicList).decode()
     }
 }
 

@@ -8,6 +8,7 @@
 
 import RxCocoa
 import RxSwift
+import Moya
 
 
 public extension PublishRelay {
@@ -46,5 +47,16 @@ public extension Driver {
     
     func filterNil<T>() -> Driver<T> where Element == T? {
         return self.filter { $0 != nil }.map { $0! } as! Driver<T>
+    }
+}
+
+
+public extension Single where Element == Response {
+    func decode<T: Decodable>() -> Observable<Event<T>> {
+        return Decoder.decode(request: self.asObservable().asSingle())
+    }
+    
+    func decode<T: Decodable>(as: T.Type) -> Observable<Event<T>> {
+        return Decoder.decode(request: self.asObservable().asSingle())
     }
 }
