@@ -52,11 +52,7 @@ public extension Driver {
 
 
 public extension Single where Element == Response {
-    func decode<T: Decodable>() -> Observable<Event<T>> {
-        return Decoder.decode(request: self.asObservable().asSingle())
-    }
-    
-    func decode<T: Decodable>(as: T.Type) -> Observable<Event<T>> {
+    func decode<T: Decodable>(as: T.Type = T.self) -> Observable<Event<T>> {
         return Decoder.decode(request: self.asObservable().asSingle())
     }
 }
