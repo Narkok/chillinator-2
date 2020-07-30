@@ -71,6 +71,8 @@ class PlayerViewController: UIViewController {
         view.fadeIn()
         view.sendSubviewToBack(disk)
         
+        disk.set(size: UIScreen.main.bounds.width / 0.69)
+        diskLeftConstraint.constant = UIScreen.main.bounds.width / 4
         initialTopConstraint  = diskTopConstraint.constant
         initialLeftConstraint = diskLeftConstraint.constant
     }

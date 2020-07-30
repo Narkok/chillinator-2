@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -89,7 +89,7 @@
                     </constraints>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lct-Ov-0k7" customClass="Disk" customModule="Chillinator_2" customModuleProvider="target">
-                    <rect key="frame" x="110" y="240" width="175" height="175"/>
+                    <rect key="frame" x="102" y="240" width="175" height="175"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="175" id="Dxz-3f-lql"/>
@@ -106,7 +106,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07g-v1-D0a" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                    <rect key="frame" x="20" y="621" width="374" height="37"/>
+                    <rect key="frame" x="20" y="636" width="374" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="mp3-LR-68A"/>
                     </constraints>
@@ -136,7 +136,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPS-c7-elQ" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                    <rect key="frame" x="20" y="668" width="374" height="24"/>
+                    <rect key="frame" x="20" y="683" width="374" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="VUx-ec-83g"/>
                     </constraints>
@@ -171,12 +171,12 @@
                 <constraint firstItem="lPS-c7-elQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7M7-Wm-kQY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sLH-st-BbK" secondAttribute="bottom" constant="30" id="GRf-fg-Mlu"/>
                 <constraint firstItem="07g-v1-D0a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="I2Y-Fx-lku"/>
-                <constraint firstItem="lct-Ov-0k7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="110" id="NmB-g1-p6X"/>
+                <constraint firstItem="lct-Ov-0k7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="102" id="NmB-g1-p6X"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lPS-c7-elQ" secondAttribute="trailing" constant="20" id="eqX-be-kAc"/>
                 <constraint firstItem="sLH-st-BbK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="jii-EB-AVT"/>
                 <constraint firstItem="lct-Ov-0k7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="196" id="kH3-MH-ohc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="07g-v1-D0a" secondAttribute="trailing" constant="20" id="qZI-Pg-Z5W"/>
-                <constraint firstItem="sLH-st-BbK" firstAttribute="top" secondItem="lPS-c7-elQ" secondAttribute="bottom" constant="40" id="rba-yr-TOq"/>
+                <constraint firstItem="sLH-st-BbK" firstAttribute="top" secondItem="lPS-c7-elQ" secondAttribute="bottom" constant="25" id="rba-yr-TOq"/>
                 <constraint firstItem="lPS-c7-elQ" firstAttribute="top" secondItem="07g-v1-D0a" secondAttribute="bottom" constant="10" id="wM8-Ws-UFr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sLH-st-BbK" secondAttribute="trailing" constant="20" id="zDR-cG-YRP"/>
             </constraints>

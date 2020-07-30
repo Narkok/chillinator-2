@@ -87,8 +87,14 @@ import Kingfisher
     }
     
     
+    /// Размер диска
+    func set(size: CGFloat) {
+        self.size = size
+    }
+    
+    
     /// Анимированная установка новой обложки
-    func setCover(url: String){
+    func set(cover url: String) {
         let duration = 0.4
         /// Затемнить обложку
         coverImageView.fadeOut(withDuration: duration)
@@ -106,7 +112,7 @@ import Kingfisher
     
     
     /// Установка позиции головки проигрывателя
-    func setPlayHeadPosition(relativeTime: Float) {
+    func set(playHeadPosition relativeTime: Float) {
         let angle = -CGFloat(pow(relativeTime, 0.8)) * CGFloat.pi / 12
         let options: UIView.AnimationOptions = relativeTime.isZero ? .curveEaseInOut : .curveLinear
         UIView.animate(withDuration: 1, delay: 0, options: options, animations: { [weak self] in

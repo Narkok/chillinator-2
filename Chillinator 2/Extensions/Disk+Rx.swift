@@ -15,7 +15,7 @@ extension Reactive where Base: Disk {
     /// Позиция головки проигрывателя
     var playHeadPosition: Binder<Float> {
         return Binder(self.base) { disk, time in
-            disk.setPlayHeadPosition(relativeTime: time)
+            disk.set(playHeadPosition: time)
         }
     }
     
@@ -23,7 +23,7 @@ extension Reactive where Base: Disk {
     /// Обложка диска
     var coverImage: Binder<String> {
         return Binder(self.base) { disk, coverUrl in
-            disk.setCover(url: coverUrl)
+            disk.set(cover: coverUrl)
         }
     }
     

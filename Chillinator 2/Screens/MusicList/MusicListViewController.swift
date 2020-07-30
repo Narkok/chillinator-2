@@ -98,7 +98,7 @@ class MusicListViewController: UIViewController {
     
     /// Открыть список композиций
     private func openList() {
-        heightConstraint.constant = 550
+        heightConstraint.constant = UIScreen.main.bounds.height / 1.62
         UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: { [weak self] in
             self?.view.layoutIfNeeded()
         })
